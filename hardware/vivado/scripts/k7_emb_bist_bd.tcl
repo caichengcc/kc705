@@ -77,7 +77,7 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   set_property -dict [ list CONFIG.C_ECC {0}  ] $LocalMemory_Cntlr_I
 
   # Create instance: lmb_bram, and set properties
-  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.0 lmb_bram ]
+  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 lmb_bram ]
   set_property -dict [ list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.use_bram_block {BRAM_Controller}  ] $lmb_bram
 
   # Create interface connections
@@ -137,7 +137,7 @@ proc create_hier_cell_DDR3_Module { parentCell nameHier } {
   create_bd_pin -dir I sys_clk_p
   create_bd_pin -dir I -from 0 -to 0 sys_rst
   create_bd_pin -dir I -from 11 -to 0 device_temp_i
-  create_bd_pin -dir O -from 1 -to 0 const
+  create_bd_pin -dir O -from 1 -to 0 const0
   create_bd_pin -dir I -from 0 -to 0 aresetn
   create_bd_pin -dir I sys_clk_n
   create_bd_pin -dir O -from 2 -to 0 const1
@@ -145,11 +145,11 @@ proc create_hier_cell_DDR3_Module { parentCell nameHier } {
   create_bd_pin -dir O -type clk ui_addn_clk_0
 
   # Create instance: ddr3_rank1_gnd, and set properties
-  set ddr3_rank1_gnd [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.0 ddr3_rank1_gnd ]
+  set ddr3_rank1_gnd [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 ddr3_rank1_gnd ]
   set_property -dict [ list CONFIG.CONST_WIDTH {3} CONFIG.CONST_VAL {0}  ] $ddr3_rank1_gnd
 
   # Create instance: DDR3_SDRAM, and set properties
-  set DDR3_SDRAM [ create_bd_cell -type ip -vlnv xilinx.com:ip:mig_7series:2.0 DDR3_SDRAM ]
+  set DDR3_SDRAM [ create_bd_cell -type ip -vlnv xilinx.com:ip:mig_7series:2.4 DDR3_SDRAM ]
   set folder [pwd]
   set mig_file [glob $folder/../../../sources/constraints/k7_emb_bist_mig_a.prj]
   set mig_file_path [glob $mig_file]
@@ -163,7 +163,7 @@ proc create_hier_cell_DDR3_Module { parentCell nameHier } {
   set_property -dict [ list CONFIG.XML_INPUT_FILE {mig_b.prj} CONFIG.RESET_BOARD_INTERFACE {Custom}  ] $DDR3_SDRAM
 
   # Create instance: ddr3_rank1_vcc, and set properties
-  set ddr3_rank1_vcc [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.0 ddr3_rank1_vcc ]
+  set ddr3_rank1_vcc [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 ddr3_rank1_vcc ]
   set_property -dict [ list CONFIG.CONST_WIDTH {2}  ] $ddr3_rank1_vcc
 
   # Create interface connections
@@ -175,7 +175,7 @@ proc create_hier_cell_DDR3_Module { parentCell nameHier } {
   connect_bd_net -net clk_in1_p_1 [get_bd_pins sys_clk_p] [get_bd_pins DDR3_SDRAM/sys_clk_p]
   connect_bd_net -net ext_reset_in_1 [get_bd_pins sys_rst] [get_bd_pins DDR3_SDRAM/sys_rst]
   connect_bd_net -net xadc_wiz_1_temp_out [get_bd_pins device_temp_i] [get_bd_pins DDR3_SDRAM/device_temp_i]
-  connect_bd_net -net xlconstant_4_const [get_bd_pins const] [get_bd_pins ddr3_rank1_vcc/const]
+  connect_bd_net -net xlconstant_4_const [get_bd_pins const0] [get_bd_pins ddr3_rank1_vcc/const]
   connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins aresetn] [get_bd_pins DDR3_SDRAM/aresetn]
   connect_bd_net -net clk_in1_n_1 [get_bd_pins sys_clk_n] [get_bd_pins DDR3_SDRAM/sys_clk_n]
   connect_bd_net -net xlconstant_3_const [get_bd_pins const1] [get_bd_pins ddr3_rank1_gnd/const]
@@ -234,7 +234,7 @@ proc create_hier_cell_flash_interface { parentCell nameHier } {
   create_bd_pin -dir I rdclk
 
   # Create instance: Linear_Flash, and set properties
-  set Linear_Flash [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_emc:2.0 Linear_Flash ]
+  set Linear_Flash [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_emc:3.0 Linear_Flash ]
   set_property -dict [ list CONFIG.C_WR_REC_TIME_MEM_0 {100000} CONFIG.C_TLZWE_PS_MEM_0 {35000} CONFIG.C_TWPH_PS_MEM_0 {12000} CONFIG.C_TWP_PS_MEM_0 {70000} CONFIG.C_TWC_PS_MEM_0 {70000} CONFIG.C_THZOE_PS_MEM_0 {7000} CONFIG.C_THZCE_PS_MEM_0 {35000} CONFIG.C_TAVDV_PS_MEM_0 {130000} CONFIG.C_TCEDV_PS_MEM_0 {130000} CONFIG.C_INCLUDE_DATAWIDTH_MATCHING_0 {1} CONFIG.C_MAX_MEM_WIDTH {16} CONFIG.C_MEM0_WIDTH {16} CONFIG.C_MEM0_TYPE {2}  ] $Linear_Flash
 
   # Create instance: flash_addr_slice, and set properties
@@ -307,7 +307,7 @@ proc create_hier_cell_GPIO_Interface { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type rst s_axi_aresetn
-  create_bd_pin -dir O -from 0 -to 0 const
+  create_bd_pin -dir O -from 0 -to 0 const0
   create_bd_pin -dir I -type clk s_axi_aclk
 
   # Create instance: LCD_GPIO, and set properties
@@ -331,7 +331,7 @@ proc create_hier_cell_GPIO_Interface { parentCell nameHier } {
   set_property -dict [ list CONFIG.C_GPIO_WIDTH {8} CONFIG.C_ALL_OUTPUTS {1}  ] $LEDs_8Bits
 
   # Create instance: fan_vcc, and set properties
-  set fan_vcc [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.0 fan_vcc ]
+  set fan_vcc [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 fan_vcc ]
 
   # Create interface connections
   connect_bd_intf_net -intf_net microblaze_system_m03_axi [get_bd_intf_pins s_axi] [get_bd_intf_pins LCD_GPIO/s_axi]
@@ -347,7 +347,7 @@ proc create_hier_cell_GPIO_Interface { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net proc_sys_reset_1_peripheral_aresetn [get_bd_pins s_axi_aresetn] [get_bd_pins LEDs_8Bits/s_axi_aresetn] [get_bd_pins Push_Buttons_5Bits/s_axi_aresetn] [get_bd_pins DIP_Switches_4Bits/s_axi_aresetn] [get_bd_pins ROTARY_GPIO/s_axi_aresetn] [get_bd_pins LCD_GPIO/s_axi_aresetn]
-  connect_bd_net -net xlconstant_1_const [get_bd_pins const] [get_bd_pins fan_vcc/const]
+  connect_bd_net -net xlconstant_1_const [get_bd_pins const0] [get_bd_pins fan_vcc/const]
   connect_bd_net -net clk_100Mhz [get_bd_pins s_axi_aclk] [get_bd_pins LEDs_8Bits/s_axi_aclk] [get_bd_pins Push_Buttons_5Bits/s_axi_aclk] [get_bd_pins DIP_Switches_4Bits/s_axi_aclk] [get_bd_pins ROTARY_GPIO/s_axi_aclk] [get_bd_pins LCD_GPIO/s_axi_aclk]
   
   # Restore current instance
@@ -422,26 +422,26 @@ proc create_hier_cell_microblaze_sybsystem { parentCell nameHier } {
   create_bd_pin -dir I -from 0 -to 0 interrupt_3
 
   # Create instance: microblaze_0, and set properties
-  set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:9.1 microblaze_0 ]
+  set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:9.5 microblaze_0 ]
   set_property -dict [ list CONFIG.C_FAULT_TOLERANT {0} CONFIG.C_D_AXI {1} CONFIG.C_D_LMB {1} CONFIG.C_I_LMB {1} CONFIG.C_DEBUG_ENABLED {1} CONFIG.C_ICACHE_BASEADDR {0x80000000} CONFIG.C_ICACHE_HIGHADDR {0xFFFFFFFF} CONFIG.C_USE_ICACHE {1} CONFIG.C_ICACHE_LINE_LEN {8} CONFIG.C_ICACHE_ALWAYS_USED {1} CONFIG.C_ICACHE_FORCE_TAG_LUTRAM {1} CONFIG.C_DCACHE_BASEADDR {0x80000000} CONFIG.C_DCACHE_HIGHADDR {0xFFFFFFFF} CONFIG.C_USE_DCACHE {1} CONFIG.C_DCACHE_LINE_LEN {8} CONFIG.C_DCACHE_ALWAYS_USED {1} CONFIG.C_DCACHE_FORCE_TAG_LUTRAM {1}  ] $microblaze_0
 
   # Create instance: debug_module, and set properties
-  set debug_module [ create_bd_cell -type ip -vlnv xilinx.com:ip:mdm:3.0 debug_module ]
+  set debug_module [ create_bd_cell -type ip -vlnv xilinx.com:ip:mdm:3.2 debug_module ]
   set_property -dict [ list CONFIG.C_USE_UART {1}  ] $debug_module
 
   # Create instance: Interrupt_Cntlr, and set properties
-  set Interrupt_Cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:3.1 Interrupt_Cntlr ]
+  set Interrupt_Cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 Interrupt_Cntlr ]
   set_property -dict [ list CONFIG.C_HAS_FAST {0}  ] $Interrupt_Cntlr
 
   # Create instance: microblaze_0_local_memory
   create_hier_cell_microblaze_0_local_memory $hier_obj microblaze_0_local_memory
 
   # Create instance: axi4lite_0, and set properties
-  set axi4lite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.0 axi4lite_0 ]
+  set axi4lite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi4lite_0 ]
   set_property -dict [ list CONFIG.NUM_MI {15}  ] $axi4lite_0
 
   # Create instance: int_ctrl_concat, and set properties
-  set int_ctrl_concat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:1.0 int_ctrl_concat ]
+  set int_ctrl_concat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 int_ctrl_concat ]
   set_property -dict [ list CONFIG.NUM_PORTS {8}  ] $int_ctrl_concat
 
   # Create interface connections
@@ -531,11 +531,11 @@ proc create_hier_cell_BRAM { parentCell nameHier } {
   create_bd_pin -dir I -type rst S_AXI_ARESETN
 
   # Create instance: Internal_BRAM, and set properties
-  set Internal_BRAM [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:3.0 Internal_BRAM ]
+  set Internal_BRAM [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.0 Internal_BRAM ]
   set_property -dict [ list CONFIG.SUPPORTS_NARROW_BURST {0}  ] $Internal_BRAM
 
   # Create instance: Internal_BRAM_block, and set properties
-  set Internal_BRAM_block [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.0 Internal_BRAM_block ]
+  set Internal_BRAM_block [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 Internal_BRAM_block ]
   set_property -dict [ list CONFIG.Memory_Type {True_Dual_Port_RAM} CONFIG.Enable_32bit_Address {true} CONFIG.use_bram_block {BRAM_Controller}  ] $Internal_BRAM_block
 
   # Create interface connections
@@ -605,18 +605,18 @@ proc create_hier_cell_Ethernet_Controller { parentCell nameHier } {
   create_bd_pin -dir O phy_rst_n
 
   # Create instance: AXI_DMA_Ethernet, and set properties
-  set AXI_DMA_Ethernet [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_dma:7.0 AXI_DMA_Ethernet ]
+  set AXI_DMA_Ethernet [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_dma:7.1 AXI_DMA_Ethernet ]
   set_property -dict [ list CONFIG.c_sg_length_width {16} CONFIG.c_include_mm2s_dre {1} CONFIG.c_sg_use_stsapp_length {1} CONFIG.c_include_s2mm_dre {1}  ] $AXI_DMA_Ethernet
 
   # Create instance: Soft_Ethernet_MAC_0, and set properties
-  set Soft_Ethernet_MAC_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernet:5.0 Soft_Ethernet_MAC_0 ]
+  set Soft_Ethernet_MAC_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_ethernet:7.0 Soft_Ethernet_MAC_0 ]
   set_property -dict [ list CONFIG.Statistics_Counters {false}  ] $Soft_Ethernet_MAC_0
 
   # Create interface connections
-  connect_bd_intf_net -intf_net ethernet_txd [get_bd_intf_pins AXI_DMA_Ethernet/M_AXIS_MM2S] [get_bd_intf_pins Soft_Ethernet_MAC_0/axi_str_txd]
-  connect_bd_intf_net -intf_net ethernet_rxd [get_bd_intf_pins Soft_Ethernet_MAC_0/axi_str_rxd] [get_bd_intf_pins AXI_DMA_Ethernet/S_AXIS_S2MM]
-  connect_bd_intf_net -intf_net ethernet_cntrl [get_bd_intf_pins AXI_DMA_Ethernet/M_AXIS_CNTRL] [get_bd_intf_pins Soft_Ethernet_MAC_0/axi_str_txc]
-  connect_bd_intf_net -intf_net ethernet_sts [get_bd_intf_pins Soft_Ethernet_MAC_0/axi_str_rxs] [get_bd_intf_pins AXI_DMA_Ethernet/S_AXIS_STS]
+  connect_bd_intf_net -intf_net ethernet_txd [get_bd_intf_pins AXI_DMA_Ethernet/M_AXIS_MM2S] [get_bd_intf_pins Soft_Ethernet_MAC_0/s_axis_txd]
+  connect_bd_intf_net -intf_net ethernet_rxd [get_bd_intf_pins Soft_Ethernet_MAC_0/m_axis_rxd] [get_bd_intf_pins AXI_DMA_Ethernet/S_AXIS_S2MM]
+  connect_bd_intf_net -intf_net ethernet_cntrl [get_bd_intf_pins AXI_DMA_Ethernet/M_AXIS_CNTRL] [get_bd_intf_pins Soft_Ethernet_MAC_0/s_axis_txc]
+  connect_bd_intf_net -intf_net ethernet_sts [get_bd_intf_pins Soft_Ethernet_MAC_0/m_axis_rxs] [get_bd_intf_pins AXI_DMA_Ethernet/S_AXIS_STS]
   connect_bd_intf_net -intf_net axi4lite_0_dma [get_bd_intf_pins S_AXI_LITE] [get_bd_intf_pins AXI_DMA_Ethernet/S_AXI_LITE]
   connect_bd_intf_net -intf_net axi_mm_mb_dma_sg [get_bd_intf_pins M_AXI_SG] [get_bd_intf_pins AXI_DMA_Ethernet/M_AXI_SG]
   connect_bd_intf_net -intf_net axi_mm_mb_dma_mm2s [get_bd_intf_pins M_AXI_MM2S] [get_bd_intf_pins AXI_DMA_Ethernet/M_AXI_MM2S]
@@ -726,7 +726,7 @@ proc create_root_design { parentCell } {
   set proc_sys_reset_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 proc_sys_reset_0 ]
 
   # Create instance: clock_generator_1, and set properties
-  set clock_generator_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.0 clock_generator_1 ]
+  set clock_generator_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.2 clock_generator_1 ]
   set_property -dict [ list CONFIG.PRIM_IN_FREQ {200.000} CONFIG.CLKOUT2_USED {true} CONFIG.CLKOUT3_USED {false} CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {150.000} CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {125.000} CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {100.000} CONFIG.PRIM_SOURCE {No_buffer} CONFIG.CLKOUT2_DRIVES {No_buffer} CONFIG.USE_RESET {false}  ] $clock_generator_1
 
   # Create instance: RS232_Uart_1, and set properties
@@ -739,11 +739,11 @@ proc create_root_design { parentCell } {
   set IIC_EEPROM [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_iic:2.0 IIC_EEPROM ]
 
   # Create instance: axi_mm_mb, and set properties
-  set axi_mm_mb [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.0 axi_mm_mb ]
+  set axi_mm_mb [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_mm_mb ]
   set_property -dict [ list CONFIG.NUM_SI {5} CONFIG.NUM_MI {2} CONFIG.ENABLE_ADVANCED_OPTIONS {1} CONFIG.XBAR_DATA_WIDTH {32} CONFIG.M00_HAS_REGSLICE {1} CONFIG.M01_HAS_REGSLICE {1} CONFIG.S01_HAS_REGSLICE {1} CONFIG.S02_HAS_REGSLICE {1} CONFIG.S03_HAS_REGSLICE {1} CONFIG.S04_HAS_REGSLICE {1}  ] $axi_mm_mb
 
   # Create instance: axi4_0, and set properties
-  set axi4_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.0 axi4_0 ]
+  set axi4_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi4_0 ]
   set_property -dict [ list CONFIG.NUM_MI {1} CONFIG.ENABLE_ADVANCED_OPTIONS {1} CONFIG.XBAR_DATA_WIDTH {512}  ] $axi4_0
 
   # Create instance: logisdhc_0, and set properties
@@ -751,7 +751,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list CONFIG.C_USE_DMA {0}  ] $logisdhc_0
 
   # Create instance: axi_xadc_0, and set properties
-  set axi_xadc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xadc_wiz:3.0 axi_xadc_0 ]
+  set axi_xadc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xadc_wiz:3.2 axi_xadc_0 ]
   set_property -dict [ list CONFIG.INTERFACE_SELECTION {Enable_AXI} CONFIG.XADC_STARUP_SELECTION {channel_sequencer} CONFIG.CHANNEL_ENABLE_VAUXP0_VAUXN0 {true} CONFIG.CHANNEL_ENABLE_VAUXP8_VAUXN8 {true} CONFIG.AVERAGE_ENABLE_VAUXP0_VAUXN0 {false} CONFIG.ENABLE_TEMP_BUS {true}  ] $axi_xadc_0
 
   # Create instance: Ethernet_Controller
@@ -821,7 +821,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_emc_1_mem_a [get_bd_ports Linear_Flash_address] [get_bd_pins flash_interface/Dout]
   connect_bd_net -net axi_emc_1_mem_adv_ldn [get_bd_ports Linear_Flash_adv_ldn] [get_bd_pins flash_interface/mem_adv_ldn]
   connect_bd_net -net axi_iic_1_gpo [get_bd_ports IIC_MUX_RESET_B] [get_bd_pins IIC_EEPROM/gpo]
-  connect_bd_net -net xlconstant_1_const [get_bd_ports sm_fan_pwm] [get_bd_pins GPIO_Interface/const]
+  connect_bd_net -net xlconstant_1_const [get_bd_ports sm_fan_pwm] [get_bd_pins GPIO_Interface/const0]
   connect_bd_net -net mig_clk_200 [get_bd_pins DDR3_Module/ui_clk] [get_bd_pins clock_generator_1/clk_in1] [get_bd_pins axi4_0/ACLK] [get_bd_pins axi_mm_mb/M01_ACLK] [get_bd_pins axi4_0/S00_ACLK] [get_bd_pins axi4_0/M00_ACLK] [get_bd_pins Ethernet_Controller/ref_clk]
   connect_bd_net -net Net [get_bd_ports Soft_Ethernet_MAC_MDIO_pin] [get_bd_pins Ethernet_Controller/mdio]
   connect_bd_net -net soft_ethernet_mac_mdc [get_bd_ports Soft_Ethernet_MAC_MDC_pin] [get_bd_pins Ethernet_Controller/mdc]
@@ -854,7 +854,7 @@ proc create_root_design { parentCell } {
   connect_bd_net -net mig_7series_1_init_calib_complete [get_bd_ports init_calib_complete] [get_bd_pins DDR3_Module/init_calib_complete]
   connect_bd_net -net xlconstant_3_const [get_bd_ports ddr3_1_n] [get_bd_pins DDR3_Module/const1]
   connect_bd_net -net clk_in1_n_1 [get_bd_ports CLK_N] [get_bd_pins DDR3_Module/sys_clk_n]
-  connect_bd_net -net xlconstant_4_const [get_bd_ports ddr3_1_p] [get_bd_pins DDR3_Module/const]
+  connect_bd_net -net xlconstant_4_const [get_bd_ports ddr3_1_p] [get_bd_pins DDR3_Module/const0]
   connect_bd_net -net xadc_wiz_1_temp_out [get_bd_pins axi_xadc_0/temp_out] [get_bd_pins DDR3_Module/device_temp_i]
   connect_bd_net -net clk_in1_p_1 [get_bd_ports CLK_P] [get_bd_pins DDR3_Module/sys_clk_p]
 
@@ -880,7 +880,7 @@ proc create_root_design { parentCell } {
   create_bd_addr_seg -range 0x10000 -offset 0xC0000000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs BRAM/Internal_BRAM/S_AXI/Mem0] SEG13
   create_bd_addr_seg -range 0x40000000 -offset 0x80000000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs DDR3_Module/DDR3_SDRAM/memmap/memaddr] SEG14
   create_bd_addr_seg -range 0x10000 -offset 0x50000000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs Ethernet_Controller/AXI_DMA_Ethernet/S_AXI_LITE/Reg] SEG15
-  create_bd_addr_seg -range 0x40000 -offset 0x50100000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs Ethernet_Controller/Soft_Ethernet_MAC_0/axi_ethernet_buffer/S_AXI_Ethernet/Axi_Ethernet_Mem0] SEG16
+  create_bd_addr_seg -range 0x40000 -offset 0x50100000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs Ethernet_Controller/Soft_Ethernet_MAC_0/s_axi/Reg0] SEG16
   create_bd_addr_seg -range 0x10000 -offset 0xB000000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs logisdhc_0/s_axi/Reg] SEG17
   create_bd_addr_seg -range 0x10000 -offset 0xD000000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Data] [get_bd_addr_segs axi_xadc_0/s_axi_lite/Reg] SEG18
   create_bd_addr_seg -range 0x40000000 -offset 0x80000000 [get_bd_addr_spaces microblaze_sybsystem/microblaze_0/Instruction] [get_bd_addr_segs DDR3_Module/DDR3_SDRAM/memmap/memaddr] SEG1

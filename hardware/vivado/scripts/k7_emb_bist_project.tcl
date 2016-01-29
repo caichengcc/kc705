@@ -1,5 +1,5 @@
 start_gui
-set version "2013.2"
+set version "2015.4"
 set project_name "k7_emb_bist_${version}"
 set project_dir "project"
 set ip_package_dir "../../../sources/ip_package"
