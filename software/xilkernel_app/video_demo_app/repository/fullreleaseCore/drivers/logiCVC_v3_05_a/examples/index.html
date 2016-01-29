@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head>
+
+
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Driver example applications</title>
+
+<link rel="stylesheet" type="text/css" href="../help.css"></head><body bgcolor="#ffffff">
+<h1> Example applications of the logiCVC driver. </h1> Xylon provides
+the SDK application templates for the example projects. The application
+templates are located in the driver folders in the sw_apps sub folder
+(e.g. logiCVC_v3_04_a/sw_apps/logiCVC_demo_standalone).<br>
+To use the example projects from the SDK follow these steps:<br>
+<br>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;"><big><big><big><big>1.</big></big></big></big><br>
+      </td>
+      <td style="vertical-align: top;">To be able to use the SDK driver
+exampes templates you must add the PATH to the driver (e.g.
+.../logiCVC_v3_04_a). You can add multiple driver paths to be able to
+access driver example templates of more drivers. <br>
+NOTE: see the path to <span style="font-weight: bold;">..\hardware</span>, this is the path to all of Xylon driver/libraries and it is located two folder levels before the drivers folders<br>
+NOTE: don't set the path to more then one version of the same drivers.<br>
+      <br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img src="../doc/repos.gif" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><big><big><big><big>2.</big></big></big></big></td>
+      <td style="vertical-align: top;">To open a driver example project go to SDK-&gt;File-&gt;New-&gt;Other..-&gt;Xilinx C Project-&gt;"select project template"</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img src="../doc/cproj.gif" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><big><big><big><big>3.</big></big></big></big></td>
+      <td style="vertical-align: top;">On the "New Xilinx C Project" window select the application template (e.g. logiCVC_demo_standalone). <br>
+Optionally modify the targeted hardware platform and processor and modify the project name.<br>
+Click <span style="font-weight: bold;">Next</span>.<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img src="../doc/nproj.gif" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;<big><big><big><big>4.</big></big></big></big></td>
+      <td style="vertical-align: top;">In this window you can create a new Board Support Package (BSP). This
+is advisable since the new BSP will automatically contain all the
+options and drivers selected.<br>
+
+Optionally you can use existing BSP but then you must provide correct settings:<br>
+
+      <div style="margin-left: 40px;">- Xylon drivers typically require a xyl_oslib library to compile<br>
+      </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img src="../doc/bsp.gif" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><big><big><big><big>5.</big></big></big></big></td>
+      <td style="vertical-align: top;">The created project will be
+added to the SDK and visible in the SDK project explorer. The example
+sources will be copied in the SDK workspace folder and you will be able
+to modify them without changing original driver example sources.<br>
+      <br>
+OPTIONAL:<br>
+
+Depending on your hardware settings (memory visible from the CPU and
+the FPGA IP core) you might need to modify the application project
+linker script. Following problems may occur when linker script is not
+suitable:<br>
+
+      <ol>
+<li>Application is linked in the same memory as the video controller
+(logiCVC). In this case the application will overwrite it self when
+drawing to the screen, resulting in application crash.</li><li>The memory where the application stores the data (images, fonts, etc.)&nbsp; is not accessible by the FPGA
+DMA circuit (e.g. logiBITBLT 2D accelerator IP core can't access the
+source images if they are stored out of its memory range).</li>
+      </ol>
+
+To modify the linker script properly examine the system memory ranges and then modify the linker script. <br>
+      <ul>
+        <li>In some cases it my be necessary only to modify the <span style="font-weight: bold;">BaseAddress</span> and <span style="font-weight: bold;">Size</span> parameters of some momory regions ( adding offset to the BaseAddress and substracting that offset from the Size).<br>
+        </li>
+        <li>In cases when all the application sections are placed to
+wrong memory region it may be faster to generate a new linker script
+using SDK wizard.<br>
+ </li>
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img src="../doc/sdkappld.gif" alt=""></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><big><big><big><big>6.</big></big></big></big></td>
+      <td style="vertical-align: top;">The Application/BSP that will be
+automatically generated with the driver example template will not
+contain any platform specific code. In some cases it is necessary to
+provide initialization of some hardware circuits for the examples to
+work properly. Typically this circuits are:<br>
+
+      <ol>
+<li><span style="font-weight: bold;">Pixel clock </span>for the video
+IP cores. When pixel clock is sourced from the oscillator/pll on the
+PCB board and not internal to the FPGA some initialization is required.</li><li>Video <span style="font-weight: bold;">codec</span> (VGA, HDMI, ...) initialization.</li>
+      </ol>
+
+To initialize platform dependent circuits like above modify the
+platform dependant part of the driver example . Typically the example
+is split in two parts:<br>
+
+      <ol>
+<li>XXX_main.c : platform dependant code (it may depend on other IP cores also)</li><li>XXX_demo.c: platform independant (depends only on the IP core that it demonstrates)<br>
+  </li>
+      </ol>
+
+      <span style="font-weight: bold;">Xylon Platform Library:</span><br>
+
+      <div style="margin-left: 40px;">Xylon provides Platform library that is
+designed to provide hardware abstraction for different development
+boards. The Xylon Platform library supports several boards ( <a href="http://www.logicbricks.com/Products/logiCRAFT-CC.aspx">logiCraft-CC</a>, <a href="http://www.xilinx.com/products/boards-and-kits/EK-S6-SP605-G.htm">SP605</a>, <a href="http://www.xilinx.com/products/boards-and-kits/EK-K7-KC705-G.htm">KC705</a>..
+). If your target board is supported by the Platform library you can
+include the Platform library in the referent BSP and configure the
+platform library:<br>
+      </div>
+
+      <ul>
+<li>When having Xylon Platform library in source form:<br>
+  </li>
+      </ul>
+
+      <ol style="margin-left: 40px;">
+<li>Make sure that you have the platform library in the ../hardware/sw_services folder (click on rescan repositories in SDK) <br>
+  </li><li>Modify the Board Support package settings and include the Platform library<br>
+  </li><li>Select&nbsp; the targeted board in the Platform Library settings (e.g. SP605)<br>
+  </li><li>Modify the ../../hardware/design.h file according to your FPGA
+design. Templates for design.h are provided in the Platform library.</li>
+      </ol>
+
+      <ul>
+<li>When having Xylon Platform library in binary form set the application project C/C++ settings:</li><ol><li>Compiler - Directories - Set inlude path (-I option)<br>
+    </li><li>Linker - Libraries - Set option to link agains libplf.a (-l option)</li><li>Linker - Libraries - Set library search path to libplf.a (-L option)<br>
+    </li></ol>
+      </ul>
+
+      <div style="margin-left: 40px;">If all of the above steps are done and
+the BSP compiles successfully the driver application code will use the
+Platform library automatically.<br>
+      </div>
+
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img src="../doc/plf2.gif" alt=""></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+
+<hr>
+Driver example documentation is contained in the driver <a href="../doc/html/api/index.html">documentation</a>.<br>
+<br>
+Following files constitute driver example:<br>
+<ul>
+
+  <li>logiCVC_demo.c/h - platform independant demo file <a href="logiCVC_demo.c">(source)</a> </li>
+
+  <li>logiCVC_main.c - platform dependant <a href="logiCVC_main.c">(source)</a> </li>
+  <li>SwConfig_cvcdemo.c - xyl_oslib swConfig file <a href="SwConfig_cvcdemo.c">(source)</a> </li>
+</ul>
+<p><font color="#800000" face="Times New Roman">Copyright © 2012 Xylon d.o.o. All rights reserved.</font></p>
+</body></html>

@@ -1,0 +1,226 @@
+\hypertarget{_oslib_spin_lock_8h}{
+\section{\-Oslib\-Spin\-Lock.h \-File \-Reference}
+\label{_oslib_spin_lock_8h}\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}}
+}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Os\-Spin\-Lock\-T $\ast$ \hyperlink{_oslib_spin_lock_8h_af078ff78b2f0eac861fb922b6edebfc9}{\-Os\-Spin\-Lock\-Construct} (\-Os\-Object\-Handle\-T h\-Parent)
+\item 
+void \hyperlink{_oslib_spin_lock_8h_ad7872e489a7786bf6b4ce0a086ce1bb9}{\-Os\-Spin\-Lock\-Destruct} (\-Os\-Spin\-Lock\-T $\ast$p\-Lock)
+\item 
+void \hyperlink{_oslib_spin_lock_8h_a5136a23ddd532dfff432c23f6a0b4edd}{\-Os\-Spin\-Lock\-Acquire} (\-Os\-Spin\-Lock\-T $\ast$p\-Lock)
+\item 
+void \hyperlink{_oslib_spin_lock_8h_a6c4f04917e5a1f27a177a20b1507b6f0}{\-Os\-Spin\-Lock\-Release} (\-Os\-Spin\-Lock\-T $\ast$p\-Lock)
+\item 
+\-Os\-Irq\-Spin\-Lock\-T $\ast$ \hyperlink{_oslib_spin_lock_8h_a10a1155da1702acbc49d830d276974dc}{\-Os\-Irq\-Spin\-Lock\-Construct} (\-Os\-Object\-Handle\-T h\-Parent)
+\item 
+void \hyperlink{_oslib_spin_lock_8h_af365640ae698a488498dcd6a8287c17e}{\-Os\-Irq\-Spin\-Lock\-Destruct} (\-Os\-Irq\-Spin\-Lock\-T $\ast$p\-Lock)
+\item 
+void \hyperlink{_oslib_spin_lock_8h_a4f0464ec9aec2f8dde37ac47071aacee}{\-Os\-Irq\-Spin\-Lock\-Acquire} (\-Os\-Irq\-Spin\-Lock\-T $\ast$p\-Lock)
+\item 
+void \hyperlink{_oslib_spin_lock_8h_a622bd7e6c360f32e68981129cee5f71f}{\-Os\-Irq\-Spin\-Lock\-Release} (\-Os\-Irq\-Spin\-Lock\-T $\ast$p\-Lock)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This confidential and proprietary code may be used only as authorized by licensing agreement from \-Xylon d.\-o.\-o. \-In the event of publication, the following notice is applicable\-:
+
+\-Copyright 2009 -\/ \-Xylon d.\-o.\-o. \-All rights reserved.
+
+\-The entire notice above must be reproduced on all authorized copies.
+
+\-Contains relevant \-O\-S specific spin locks, as well as the spin lock functionality common to all the \-O\-Ss.
+
+
+\begin{DoxyPre}
+ MODIFICATION HISTORY:\end{DoxyPre}
+
+
+
+\begin{DoxyPre} Ver    Who  Date     Changes \par
+
+ -----  ---- -------- ------------------------------------------------------- \par
+
+ 1.00.a HJ  30/10/09  First release \par
+
+ \end{DoxyPre}
+ 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_oslib_spin_lock_8h_af078ff78b2f0eac861fb922b6edebfc9}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Spin\-Lock\-Construct@{\-Os\-Spin\-Lock\-Construct}}
+\index{\-Os\-Spin\-Lock\-Construct@{\-Os\-Spin\-Lock\-Construct}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Spin\-Lock\-Construct}]{\setlength{\rightskip}{0pt plus 5cm}\-Os\-Spin\-Lock\-T$\ast$ \-Os\-Spin\-Lock\-Construct (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Object\-Handle\-T}]{h\-Parent}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_af078ff78b2f0eac861fb922b6edebfc9}
+\-Creates a spin lock.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em h\-Parent} & is a spin lock parent object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Pointer to a newly created spin lock.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-This type of spin lock is not to be used from an \-I\-S\-R. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_ad7872e489a7786bf6b4ce0a086ce1bb9}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Spin\-Lock\-Destruct@{\-Os\-Spin\-Lock\-Destruct}}
+\index{\-Os\-Spin\-Lock\-Destruct@{\-Os\-Spin\-Lock\-Destruct}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Spin\-Lock\-Destruct}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Spin\-Lock\-Destruct (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Spin\-Lock\-T $\ast$}]{p\-Lock}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_ad7872e489a7786bf6b4ce0a086ce1bb9}
+\-Destroys a spin lock object.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Lock} & is a spin lock pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_a5136a23ddd532dfff432c23f6a0b4edd}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Spin\-Lock\-Acquire@{\-Os\-Spin\-Lock\-Acquire}}
+\index{\-Os\-Spin\-Lock\-Acquire@{\-Os\-Spin\-Lock\-Acquire}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Spin\-Lock\-Acquire}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Spin\-Lock\-Acquire (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Spin\-Lock\-T $\ast$}]{p\-Lock}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_a5136a23ddd532dfff432c23f6a0b4edd}
+\-Acquires a spin lock.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Lock} & is a spin lock pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-Each call must be paired with with a call to \-Os\-Spin\-Lock\-Release. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_a6c4f04917e5a1f27a177a20b1507b6f0}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Spin\-Lock\-Release@{\-Os\-Spin\-Lock\-Release}}
+\index{\-Os\-Spin\-Lock\-Release@{\-Os\-Spin\-Lock\-Release}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Spin\-Lock\-Release}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Spin\-Lock\-Release (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Spin\-Lock\-T $\ast$}]{p\-Lock}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_a6c4f04917e5a1f27a177a20b1507b6f0}
+\-Releases a spin lock.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Lock} & is a spin lock handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-Each call must be paired with with a call to \-Os\-Spin\-Lock\-Acquire. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_a10a1155da1702acbc49d830d276974dc}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Irq\-Spin\-Lock\-Construct@{\-Os\-Irq\-Spin\-Lock\-Construct}}
+\index{\-Os\-Irq\-Spin\-Lock\-Construct@{\-Os\-Irq\-Spin\-Lock\-Construct}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Irq\-Spin\-Lock\-Construct}]{\setlength{\rightskip}{0pt plus 5cm}\-Os\-Irq\-Spin\-Lock\-T$\ast$ \-Os\-Irq\-Spin\-Lock\-Construct (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Object\-Handle\-T}]{h\-Parent}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_a10a1155da1702acbc49d830d276974dc}
+\-Creates an interrupt spin lock.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em h\-Parent} & is an interrupt spin lock parent object.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Pointer to a newly created interrupt spin lock.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-This type of spin lock is to be used from an \-I\-S\-R. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_af365640ae698a488498dcd6a8287c17e}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Irq\-Spin\-Lock\-Destruct@{\-Os\-Irq\-Spin\-Lock\-Destruct}}
+\index{\-Os\-Irq\-Spin\-Lock\-Destruct@{\-Os\-Irq\-Spin\-Lock\-Destruct}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Irq\-Spin\-Lock\-Destruct}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Irq\-Spin\-Lock\-Destruct (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Irq\-Spin\-Lock\-T $\ast$}]{p\-Lock}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_af365640ae698a488498dcd6a8287c17e}
+\-Destroys an interrupt spin lock object.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Lock} & is an interrupt spin lock pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_a4f0464ec9aec2f8dde37ac47071aacee}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Irq\-Spin\-Lock\-Acquire@{\-Os\-Irq\-Spin\-Lock\-Acquire}}
+\index{\-Os\-Irq\-Spin\-Lock\-Acquire@{\-Os\-Irq\-Spin\-Lock\-Acquire}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Irq\-Spin\-Lock\-Acquire}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Irq\-Spin\-Lock\-Acquire (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Irq\-Spin\-Lock\-T $\ast$}]{p\-Lock}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_a4f0464ec9aec2f8dde37ac47071aacee}
+\-Acquires an interrupt spin lock.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Lock} & is an interrupt spin lock pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-Each call must be paired with with a call to \-Os\-Irq\-Spin\-Lock\-Release. 
+\end{DoxyNote}
+\hypertarget{_oslib_spin_lock_8h_a622bd7e6c360f32e68981129cee5f71f}{
+\index{\-Oslib\-Spin\-Lock.\-h@{\-Oslib\-Spin\-Lock.\-h}!\-Os\-Irq\-Spin\-Lock\-Release@{\-Os\-Irq\-Spin\-Lock\-Release}}
+\index{\-Os\-Irq\-Spin\-Lock\-Release@{\-Os\-Irq\-Spin\-Lock\-Release}!OslibSpinLock.h@{\-Oslib\-Spin\-Lock.\-h}}
+\subsubsection[{\-Os\-Irq\-Spin\-Lock\-Release}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Irq\-Spin\-Lock\-Release (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Irq\-Spin\-Lock\-T $\ast$}]{p\-Lock}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_spin_lock_8h_a622bd7e6c360f32e68981129cee5f71f}
+\-Releases an interrupt spin lock.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Lock} & is an interrupt spin lock handle.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-Each call must be paired with with a call to \-Os\-Irq\-Spin\-Lock\-Acquire. 
+\end{DoxyNote}

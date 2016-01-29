@@ -1,0 +1,62 @@
+\hypertarget{p3_p3s1}{}\section{\-General idea}\label{p3_p3s1}
+\-Device driver for some specific hardware is usually written multiple times for each operating system and each physical bus used to access the hardware.
+
+\-For example for \-U\-A\-R\-T and \-I2\-C hardware blocks on two different operating systems and accessible over two different busses you will have following 8 variations. \-Each of them requiring a separate driver\-: \begin{DoxyItemize}
+\item \-U\-A\-R\-T, \-Linux \-O\-S, \-P\-C\-I bus \item \-U\-A\-R\-T, \-Linux \-O\-S, \-U\-S\-B bus \item \-U\-A\-R\-T, \-W\-I\-N\-C\-E \-O\-S, \-P\-C\-I bus \item \-U\-A\-R\-T, \-W\-I\-N\-C\-E \-O\-S, \-U\-S\-B bus \item \-I2\-C, \-Linux \-O\-S, \-P\-C\-I bus \item \-I2\-C, \-Linux \-O\-S, \-U\-S\-B bus \item \-I2\-C, \-W\-I\-N\-C\-E \-O\-S, \-P\-C\-I bus \item \-I2\-C, \-W\-I\-N\-C\-E \-O\-S, \-U\-S\-B bus\end{DoxyItemize}
+\-Since driver writing is expensive process we try to isolate common elements in drivers and reduce the amount of code and effort while to minimal degree.
+
+\-In the example above following 10 parts can be isolated as separate modules\-: \begin{DoxyItemize}
+\item 1. \-Linux \-I2\-C driver \item 2. \-Linux \-U\-A\-R\-T driver \item 3. \-W\-I\-N\-C\-E \-I2\-C driver \item 4. \-W\-I\-N\-C\-E \-U\-A\-R\-T driver \item 5. \-I2\-C generic part of driver \item 6. \-U\-A\-R\-T generic part of driver \item 7. \-W\-I\-N\-C\-E \-P\-C\-I \-B\-U\-S interface \item 8. \-W\-I\-N\-C\-E \-U\-S\-B \-B\-U\-S interface \item 9. \-Linux \-P\-C\-I \-B\-U\-S interface \item 10.\-Linux \-U\-S\-B \-B\-U\-S interface\end{DoxyItemize}
+\-By partioning the drivers in such a way we at firs end up with more modules then before. \-Fortunatelly some of this modules are reusable and this adds value\-:
+
+1. -\/ 4. are the \-O\-S dependant drivers (upper driver layer) -\/ this layer if driver has to be written for each new driver so it is not reusable but advantage is that it is actually only a thin wrapper
+
+5. and 6. are the generic hardware drivers. \-They describe the hardware functionality. \-Generic drivers for this hardware can be reused for each new port of driver to some new \-O\-S/\-B\-U\-S combination.
+
+7. and 8. are \-W\-I\-N\-C\-E implementation of the different \-B\-U\-S access interfaces. \-This part is common for all drivers that will be written on \-W\-I\-N\-E and can be reused.
+
+9. and 10. are \-Linux implementation of the different \-B\-U\-S access interfaces. \-This part is common for all drivers that will be written on \-W\-I\-N\-E and can be reused.\hypertarget{p3_p3s2}{}\section{\-Layered driver architecture}\label{p3_p3s2}
+\-The driver layered architecture is following\-:\par
+ {\bfseries  1. \-O\-S driver (\-O\-S\-D\-R\-V) }\par
+ \-O\-S\-D\-R\-V is the \-O\-S dependant part of driver. \-It is made specificaly for the targeted \-O\-S and the targeted \-B\-U\-S ( e.\-g. \-Linux driver for \-U\-A\-R\-T over \-U\-S\-B). \-Usually the \-O\-S\-D\-R\-V is just a thin code wrapper required by \-O\-S for particualr type of driver. \-Main driver functionality should reside in next layer.
+
+{\bfseries  2. \-Generic driver (\-G\-E\-N\-D\-R\-V) } \par
+ \-G\-E\-N\-D\-R\-V is the generic part of the driver that describes the hardware functionality (e.\-g. generic \-U\-A\-R\-T driver would define \-U\-A\-R\-T registers and some common functions for usuall \-U\-A\-R\-T operation). \-Generic driver is completely independent on the \-O\-S or the \-B\-U\-S.
+
+{\bfseries  3. \-O\-S library (\-O\-S\-L\-I\-B) }\par
+ \-O\-S\-L\-I\-B is library written for a specific \-O\-S system. \-This library provides a common interface which generic drivers can use on any \-O\-S / \-B\-U\-S combination. \-It provides the interface to the specific \-O\-S types, synchronisation mechanisms, bus access mechanisms and other. \par
+ \begin{DoxyNote}{\-Note}
+\-Driver layers are separated only when they are in the source form. \-They are compiled and linked into a single driver binary. \par
+ \par
+ \-With such layered architecture we minimize the amount of work required when writting driver for new \-O\-S/\-B\-U\-S combination\-:
+\begin{DoxyItemize}
+\item \-O\-S\-L\-I\-B has to be written only once for each \-O\-S.
+\item \-G\-E\-N\-D\-R\-V is part of driver that has to be written only once for given hardware.
+\item \-O\-S\-D\-R\-V has to be written each time we implement a new driver for some \-O\-S/\-B\-U\-S.
+\end{DoxyItemize}
+\end{DoxyNote}
+\hypertarget{p3_p3s3}{}\section{\-Oslib interface}\label{p3_p3s3}
+\-Xylon \-O\-S library (xyl\-\_\-oslib) provides interface to all of the \-O\-S specific functions that are required by a driver. \-By using this library generic driver (\-G\-E\-N\-D\-R\-V) can be made completely \-O\-S and \-B\-U\-S independent.
+
+\-Following interface groups are provided by the oslib\-: \begin{DoxyParagraph}{\-Os types}
+\-It provides typical types (pointers, unsigned 8,16,32). \-See \hyperlink{_oslib_types_8h}{\-Oslibtypes.\-h} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-O\-S debug }
+\-Provides debug macros for printing, asserting. \-See \hyperlink{_oslib_debug_8h}{\-Oslib\-Debug.\-h} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-O\-S hw access }
+\-Provides access functions to hardware register. \-Hardware access is independant of the bus type. \par
+ \-Bus independancy is obtained using the pointer to struct \-\_\-\-Os\-Reg\-Range\-T which is argument to all access functions. \par
+ \-Functions \-Os\-Reg\-Range\-Init and \-Os\-Reg\-Range\-Deinit provide init deinit interface for the bus access descriptor. \-Os\-Hw\-Resource\-T represents the hardware resource input structure\par
+ struct \-\_\-\-Os\-Reg\-Range\-T represents the \-O\-S\-L\-I\-B descriptor for accessing hardware registers. \-See \hyperlink{_oslib_hw_access_8h}{\-Oslib\-Hw\-Access.\-h} \par
+
+\begin{DoxyItemize}
+\item note\-: for documentation of structures struct \-\_\-\-Os\-Reg\-Range\-T and \-Os\-Hw\-Resource\-T look in the oslib implementation document (e.\-g. \-U\-M\-\_\-xyl\-\_\-oslib\-\_\-linux\-\_\-1\-\_\-0\-\_\-0) 
+\end{DoxyItemize}
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-O\-S spinlock }
+\-Provides interface for spinlocks, see \hyperlink{_oslib_spin_lock_8h}{\-Oslib\-Spin\-Lock.\-h} 
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{\-O\-S misc }
+\-Provides interface for miscellaneous \-O\-S functions \hyperlink{_oslib_misc_8h}{\-Oslib\-Misc.\-h} 
+\end{DoxyParagraph}

@@ -1,0 +1,214 @@
+\hypertarget{_oslib_debug_8h}{
+\section{\-Oslib\-Debug.h \-File \-Reference}
+\label{_oslib_debug_8h}\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}}
+}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_oslib_debug_8h_a3272fb06bbd53f80466322b430068755}{
+\#define {\bfseries \-O\-S\-\_\-\-A\-D\-D\-\_\-\-D\-E\-B\-U\-G\-\_\-\-S\-U\-P\-P\-O\-R\-T}}
+\label{_oslib_debug_8h_a3272fb06bbd53f80466322b430068755}
+
+\item 
+\hypertarget{_oslib_debug_8h_ad9fa0bec1159874c7d1f6a85e1365d77}{
+\#define {\bfseries \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G2}(file, line)~\-T\-E\-X\-T(file) \-T\-E\-X\-T(\char`\"{}\-:\char`\"{}) \-T\-E\-X\-T(\#line)}
+\label{_oslib_debug_8h_ad9fa0bec1159874c7d1f6a85e1365d77}
+
+\item 
+\hypertarget{_oslib_debug_8h_a96f69e39d89b1fa66b4b28988da69a9c}{
+\#define {\bfseries \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G}(file, line)~\-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G2(file, line)}
+\label{_oslib_debug_8h_a96f69e39d89b1fa66b4b28988da69a9c}
+
+\item 
+\#define \hyperlink{_oslib_debug_8h_ad3b64388306f039c1f16fae10109fc68}{\-O\-S\-\_\-\-A\-S\-S\-E\-R\-T}(e)~((void)((e) $|$$|$ (\-Os\-Printf\-Error(\-T\-E\-X\-T(\char`\"{}\-A\-S\-S\-E\-R\-T \char`\"{}) \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-) \-T\-E\-X\-T(\char`\"{}$\backslash$r$\backslash$n\char`\"{})), 0)))
+\item 
+\#define \hyperlink{_oslib_debug_8h_a6d17054d9c6d13e3ff4d83aa8bc5b06f}{\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D}()~\-Os\-Printf\-Info(\-T\-E\-X\-T(\char`\"{}\-P\-N\-T \char`\"{}) \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-) \-T\-E\-X\-T(\char`\"{}$\backslash$r$\backslash$n\char`\"{}))
+\item 
+\#define \hyperlink{_oslib_debug_8h_ad70acac1be230427e80b400804d7ad9c}{\-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D}()~\-Os\-Printf\-Info(\-T\-E\-X\-T(\char`\"{}\-P\-A\-T \char`\"{}) \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-) \-T\-E\-X\-T(\char`\"{}$\backslash$r$\backslash$n\char`\"{}))
+\item 
+\#define \hyperlink{_oslib_debug_8h_afd1932c551c05fb9ad910bf5954b638a}{\-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D}()~do \{ \} while(0)
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_oslib_debug_8h_a0d8d570f0ae746dc8ccf8b853fb16c89}{\-Os\-Debug\-Init} (void)
+\item 
+void \hyperlink{_oslib_debug_8h_acc46700f124e89109e2021253052e2b4}{\-Os\-Debug\-Set} (\-Os\-Trace\-Level\-T trace\-Level, \-Os\-U32 trace\-Flags)
+\item 
+void \hyperlink{_oslib_debug_8h_a6af620ffd88218381e4c9b321fc71475}{\-Os\-Printf\-Trace} (\-Os\-Trace\-Level\-T trace\-Level, \-Os\-U32 trace\-Flags, \-Os\-Char\-T $\ast$p\-Format,...)
+\item 
+void \hyperlink{_oslib_debug_8h_afc1882a845da35a949ad9edf7547e68c}{\-Os\-Printf\-Trace\-Cond} (\-Os\-Trace\-Level\-T trace\-Level, \-Os\-U32 trace\-Flags, \-B\-O\-O\-L\-E\-A\-N b\-Cond, \-Os\-Char\-T $\ast$p\-Format,...)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This confidential and proprietary code may be used only as authorized by licensing agreement from \-Xylon d.\-o.\-o. \-In the event of publication, the following notice is applicable\-:
+
+\-Copyright 2009 -\/ \-Xylon d.\-o.\-o. \-All rights reserved.
+
+\-The entire notice above must be reproduced on all authorized copies.
+
+\-Contains relevant \-O\-S specific debug wrappers, as well as the debug functionality common to all the \-O\-Ss.
+
+
+\begin{DoxyPre}
+ MODIFICATION HISTORY:\end{DoxyPre}
+
+
+
+\begin{DoxyPre} Ver    Who  Date     Changes \par
+
+ -----  ---- -------- ------------------------------------------------------- \par
+
+ 1.00.a HJ  30/10/09  First release \par
+
+ \end{DoxyPre}
+ 
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_oslib_debug_8h_ad3b64388306f039c1f16fae10109fc68}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-O\-S\-\_\-\-A\-S\-S\-E\-R\-T@{\-O\-S\-\_\-\-A\-S\-S\-E\-R\-T}}
+\index{\-O\-S\-\_\-\-A\-S\-S\-E\-R\-T@{\-O\-S\-\_\-\-A\-S\-S\-E\-R\-T}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-O\-S\-\_\-\-A\-S\-S\-E\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-O\-S\-\_\-\-A\-S\-S\-E\-R\-T(
+\begin{DoxyParamCaption}
+\item[{}]{e}
+\end{DoxyParamCaption}
+)~((void)((e) $|$$|$ (\-Os\-Printf\-Error(\-T\-E\-X\-T(\char`\"{}\-A\-S\-S\-E\-R\-T \char`\"{}) \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-) \-T\-E\-X\-T(\char`\"{}$\backslash$r$\backslash$n\char`\"{})), 0)))}}
+\label{_oslib_debug_8h_ad3b64388306f039c1f16fae10109fc68}
+\-Oslib assert macro. \hypertarget{_oslib_debug_8h_a6d17054d9c6d13e3ff4d83aa8bc5b06f}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D@{\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D}}
+\index{\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D@{\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~\-Os\-Printf\-Info(\-T\-E\-X\-T(\char`\"{}\-P\-N\-T \char`\"{}) \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-) \-T\-E\-X\-T(\char`\"{}$\backslash$r$\backslash$n\char`\"{}))}}
+\label{_oslib_debug_8h_a6d17054d9c6d13e3ff4d83aa8bc5b06f}
+\-Debug code-\/coverage macro. \-Use this macro when first writting some part of code \hypertarget{_oslib_debug_8h_ad70acac1be230427e80b400804d7ad9c}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D@{\-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D}}
+\index{\-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D@{\-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~\-Os\-Printf\-Info(\-T\-E\-X\-T(\char`\"{}\-P\-A\-T \char`\"{}) \-F\-I\-L\-E\-N\-A\-M\-E\-\_\-\-A\-N\-D\-\_\-\-L\-I\-N\-E\-N\-U\-M\-B\-E\-R\-\_\-\-S\-T\-R\-I\-N\-G(\-\_\-\-\_\-\-F\-I\-L\-E\-\_\-\-\_\-, \-\_\-\-\_\-\-L\-I\-N\-E\-\_\-\-\_\-) \-T\-E\-X\-T(\char`\"{}$\backslash$r$\backslash$n\char`\"{}))}}
+\label{_oslib_debug_8h_ad70acac1be230427e80b400804d7ad9c}
+\-Debug code-\/coverage macro. \-Use this macro when some part of code past initial tests. \-Rename \-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D to \-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D \hypertarget{_oslib_debug_8h_afd1932c551c05fb9ad910bf5954b638a}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D@{\-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D}}
+\index{\-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D@{\-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~do \{ \} while(0)}}
+\label{_oslib_debug_8h_afd1932c551c05fb9ad910bf5954b638a}
+\-Debug code-\/coverage macro. \-Use this macro when some part of code passed testing \-Rename \-P\-A\-T\-H\-\_\-\-A\-L\-M\-O\-S\-T\-\_\-\-T\-E\-S\-T\-E\-D to \-P\-A\-T\-H\-\_\-\-T\-E\-S\-T\-E\-D 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_oslib_debug_8h_a0d8d570f0ae746dc8ccf8b853fb16c89}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-Os\-Debug\-Init@{\-Os\-Debug\-Init}}
+\index{\-Os\-Debug\-Init@{\-Os\-Debug\-Init}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-Os\-Debug\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Debug\-Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_debug_8h_a0d8d570f0ae746dc8ccf8b853fb16c89}
+\-Initializes debug support.
+
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-This function must be called before any other debug functions (e.\-g. \-Os\-Printf\-Info) or macros (e.\-g. \hyperlink{_oslib_debug_8h_a6d17054d9c6d13e3ff4d83aa8bc5b06f}{\-P\-A\-T\-H\-\_\-\-N\-O\-T\-\_\-\-Y\-E\-T\-\_\-\-T\-E\-S\-T\-E\-D}) are called. 
+\end{DoxyNote}
+\hypertarget{_oslib_debug_8h_acc46700f124e89109e2021253052e2b4}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-Os\-Debug\-Set@{\-Os\-Debug\-Set}}
+\index{\-Os\-Debug\-Set@{\-Os\-Debug\-Set}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-Os\-Debug\-Set}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Debug\-Set (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Trace\-Level\-T}]{trace\-Level, }
+\item[{\-Os\-U32}]{trace\-Flags}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_debug_8h_acc46700f124e89109e2021253052e2b4}
+\-Sets debug level and flags.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em trace\-Level} & specifies the max message importance level to be printed out. \\
+\hline
+{\em trace\-Flags} & specifies the components to be printed out.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_debug_8h_a6af620ffd88218381e4c9b321fc71475}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-Os\-Printf\-Trace@{\-Os\-Printf\-Trace}}
+\index{\-Os\-Printf\-Trace@{\-Os\-Printf\-Trace}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-Os\-Printf\-Trace}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Printf\-Trace (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Trace\-Level\-T}]{trace\-Level, }
+\item[{\-Os\-U32}]{trace\-Flags, }
+\item[{\-Os\-Char\-T $\ast$}]{p\-Format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_debug_8h_a6af620ffd88218381e4c9b321fc71475}
+\-Formats and prints a series of wchars and values to the debug output depending on the trace level and flags.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em trace\-Level} & specifies the message importance level. \\
+\hline
+{\em trace\-Flags} & specifies the component calling the function. \\
+\hline
+{\em p\-Format} & specifies the format control. \\
+\hline
+{\em ...} & are optional arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-See printf for more info on p\-Format. 
+\end{DoxyNote}
+\hypertarget{_oslib_debug_8h_afc1882a845da35a949ad9edf7547e68c}{
+\index{\-Oslib\-Debug.\-h@{\-Oslib\-Debug.\-h}!\-Os\-Printf\-Trace\-Cond@{\-Os\-Printf\-Trace\-Cond}}
+\index{\-Os\-Printf\-Trace\-Cond@{\-Os\-Printf\-Trace\-Cond}!OslibDebug.h@{\-Oslib\-Debug.\-h}}
+\subsubsection[{\-Os\-Printf\-Trace\-Cond}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Printf\-Trace\-Cond (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Trace\-Level\-T}]{trace\-Level, }
+\item[{\-Os\-U32}]{trace\-Flags, }
+\item[{\-B\-O\-O\-L\-E\-A\-N}]{b\-Cond, }
+\item[{\-Os\-Char\-T $\ast$}]{p\-Format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_debug_8h_afc1882a845da35a949ad9edf7547e68c}
+\-Formats and prints a series of wchars and values to the debug output depending on the trace level and flags, as well as on a specified condition.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em trace\-Level} & specifies the message importance level. \\
+\hline
+{\em trace\-Flags} & specifies the component calling the function. \\
+\hline
+{\em b\-Cond} & is \-F\-A\-L\-S\-E if the message is not to be output. \\
+\hline
+{\em p\-Format} & specifies the format control. \\
+\hline
+{\em ...} & are optional arguments.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-See printf for more info on p\-Format. 
+\end{DoxyNote}

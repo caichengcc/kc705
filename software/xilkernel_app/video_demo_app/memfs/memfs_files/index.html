@@ -1,0 +1,922 @@
+<!-- Copyright (c) 2007-2009 Xilinx, Inc.  All rights reserved.
+     created by Srinivasa Murthy Attili
+     Date: 2-Feb-2012
+   meta htpp-equiv='X-UA_Compatible' content='IE=5,IE=9'/
+-->
+
+<html>
+<head>
+  <title> Xilinx: XilKernel Demonstration over WebServer </title>
+  <link type="text/css" rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+<div id="container">
+<b class="rtop">
+  <b class="r1"></b> <b class="r2"></b> <b class="r3"></b> <b class="r4"></b>
+</b>
+
+<img src="images/logo.gif" style="padding-left:20px" target="SelectFrame"/>
+
+<h1>Kintex-7 Embedded TRD - Video Demonstration over WebServer </h1>
+<p STYLE="font-family : monospace; font-size : 10pt"> 
+Hello! This is a demonstration of Embedded Web server created using lwIP. Using the
+lwIP networking stack, a Web server can be easily embedded into your software application.
+A Web server provides a method to monitor the embedded platform via an Internet browser.
+This example webpage demostrates the <b><u>VIDEO DEMO TESTS</u></b> execute over a webserver. 
+This webpage facilitates to select the Video streams, Patterns, start and view its result graphically.
+</p>
+
+<br>
+<p STYLE="font-family : monospace; font-size : 10pt"> 
+<font color="green"> <b> This system supports 4 video streams, in that 2 are always test patterns. 
+Other 2 are either Live Video or Test Patterns based on "Live Video" option. 
+This selected option is applied to "Stream0, Stream1" in Video Selection menu.<br>
+DEFAULT: Live video NO.</b> </font><br>
+<font color="red"> <b> Before select Live video, ensure the FMC cards are plugged in and video sources are 
+connected.</b> </font>
+</p>
+<br>
+
+<div align="left">
+
+<form name="vdemo_form">
+<table border="1" cellpadding="1" width="85%">
+<tbody>
+<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;" WIDTH="90%">
+  <tr>
+	<td bgcolor="yellow" vertical-align: top; align="center" style="font-size: 12px; font-family: tahoma,geneva,sans-serif; border:1px groove red" >
+	  <b>VIDEO CONTROL PANEL</b>
+	</td>
+	<td bgcolor="yellow" colspan="2" vertical-align: top; align="center" style="font-size: 12px; font-family: tahoma,geneva,sans-serif; border:1px groove red" >
+	  <b>PERFORMANCE and HEALTH MONITORS</b>
+	</td>
+  </tr>
+
+  <tr>
+	<td rowspan="2" bgcolor="teal" style="vertical-align:top; align="left"; font-size: 12px; font-color="white"; font-family: tahoma,geneva,sans-serif; border:1px groove red" WIDTH="60%">
+	<b>
+	<font color="white">
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;"> 
+	<img name="setup" src="images/k7_vdemo_minimum.JPG" width="200" height=150" /> <br>
+	LIVE VIDEO <br>
+	<input name="vlive" type="radio" onClick="show_vdemo()" /> Yes <br>
+	<input name="vlive" type="radio" onClick="show_vdemo()" / checked> No <br>
+	<hr style="height:0.5px;border:1px solid #fff;"/> <br>
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;"> STREAM SELECTION <br>
+	<input name="vtest" type="radio" onClick="show_vdemo()" /> Full Stream 0 <br>
+	<input name="vtest" type="radio" onClick="show_vdemo()" /> Full Stream 1 <br>
+	<!-- <input name="vtest" type="radio" onClick="show_vdemo()" /> Scaled streams <br> -->
+	<input type="radio" name="vtest" value="1" onClick="show_vdemo()" /> <style="margin-left: 10px;">Scaled Stream 0 <br>
+	<input type="radio" name="vtest" value="2" onClick="show_vdemo()" /> <style="margin-left: 10px;">Scaled Stream 1 <br>
+	<input type="radio" name="vtest" value="3" onClick="show_vdemo()" /> <style="margin-left: 10px;">Scaled Stream 2 <br>
+	<input type="radio" name="vtest" value="4" onClick="show_vdemo()" /> <style="margin-left: 10px;">Scaled Stream 3 <br>
+	<input type="radio" name="vtest" value="5" onClick="show_vdemo()" /> <style="margin-left: 10px;">All Scaled streams <br>
+	<!--<input type="radio" name="vtest" value="6" onClick="regress_vdemo()" /> <style="margin-left: 10px;">Regression<br> -->
+	<!--<input type="radio" name="vtest" value="6" onClick="show_vdemo()" /> <style="margin-left: 10px;">Slide show <br> -->
+	<br><br>
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;"> PATTERN SELECTION <br>
+	<input type="checkbox" name="pattern" value="1" onClick="show_vdemo()" /> Alpha Blends<br>
+	<input type="checkbox" name="pattern" value="2" onClick="show_vdemo()" /> Move around
+	<br>
+	<br>
+	</td>
+
+        <!-- COL 1 -->
+        <td bgcolor="white">
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">
+	        &nbsp;&nbsp;&nbsp;
+		<font color="red"><b> RED Plot&nbsp;&nbsp;&nbsp;: Read  Performance (Giga bits per second)<br>
+	        &nbsp;&nbsp;&nbsp;
+		<font color="blue"><b> BLUE Plot&nbsp;&nbsp;: Write Performance (Giga bits per second)<br>
+	<embed id="svg_graph" src="svg/graph.svg" width="550" height="400" type="image/svg+xml" />
+	</td>
+	
+	<td rowspan="2">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;"><b>onchip temperature (<sup>o</sup>C)<br>
+	<embed id="svg_graph_temp" src="svg/graph_temp.svg" width="300" height="200" type="image/svg+xml" >
+	</embed> <br> <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<font color="red"><b> RED Plot:  onchip voltage (V<sub>CC INT
+	</sub>) <br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<font color="blue"><b> BLUE Plot: onchip aux voltage (V<sub>CC AUX
+	</sub>)<br>
+	<embed id="svg_graph_voltage" src="svg/graph_voltage.svg" width="300" height="150" type="image/svg+xml">
+	</embed>
+	</td>
+  </tr>
+
+  <tr>
+	<td>
+	&nbsp;&nbsp;&nbsp;
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">
+	<font color="red"><b> Read Performance Data </b>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">
+	<font color="blue"><b> Write Performance Data </b><br>
+	<textarea name="AllCDMAValues_rd" readonly="readonly" cols="30" rows="2" class="textoutput" STYLE="font-family : monospace; font-size : 10pt">
+	</textarea>
+	<textarea name="AllCDMAValues_wr" readonly="readonly" cols="30" rows="2" class="textoutput" STYLE="font-family : monospace; font-size : 10pt">
+	</textarea>
+	</td>
+  </tr>
+</tbody>
+</table>
+<br>
+<br>
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">
+	<font color="blue">
+	<b> <sub> © Copyright 2012 Xilinx Inc. </sub> </b>
+<br>
+<br>
+</form>
+</body>
+</html>
+
+
+  <script language="javascript">
+<!--
+  var isBusy = false;
+  var userStopped = false;
+  var PollStatistics = false;
+  //$ var GraphIntervalID;
+  var alldata_rd   = new Array();
+  var allcoords_rd = new Array();
+  var NumCoords_rd;
+  var MaxCoords_rd;
+  
+  var alldata_wr   = new Array();
+  var allcoords_wr = new Array();
+  var NumCoords_wr;
+  var MaxCoords_wr;
+  
+  var alldata_temp   = new Array();
+  var allcoords_temp = new Array();
+  var NumCoords_temp;
+  var MaxCoords_temp;
+  
+  var alldata_vint   = new Array();
+  var allcoords_vint = new Array();
+  var NumCoords_vint;
+  var MaxCoords_vint;
+  
+  var alldata_vaux   = new Array();
+  var allcoords_vaux = new Array();
+  var NumCoords_vaux;
+  var MaxCoords_vaux;
+
+  var alldata = new Array();
+  var allcoords = new Array();
+  var NumCoords;
+  var MaxCoords;
+
+  var testIter;
+  var curImage=100;
+
+  function stopVideo()
+  {
+	var xmlhttp;
+	isBusy = true;
+  	if (window.XMLHttpRequest)
+  	{
+  		xmlhttp = new XMLHttpRequest();
+  	}
+  	else
+  	{
+  		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+
+	// ASYNCHRONOUS
+	xmlhttp.onreadystatechange=function()
+        {
+  	  if (xmlhttp.readyState == 4)
+	  {
+	    isBusy = false;
+  	  }
+        }
+
+	// Send the post request for a data point
+	var req = "cmd/vdemoxhr,"+1+","+0+","+0+","+0;
+	try
+	{
+	  	xmlhttp.open("POST", req, false);
+		xmlhttp.send();
+	}
+	catch(e)
+	{
+		alert("server is down \n");
+		isBusy = false;
+	}
+  }
+
+  window.onunload = function()
+  {
+      stopVideo();
+      if(PollStatistics == true)
+      {
+          //$ clearInterval(GraphIntervalID);
+      }
+      //window.parent.close();
+  }
+
+  window.onload = function()
+  {
+        stopVideo();
+        //window.parent.opener = window;
+	// Initialize graphs
+  	NumCoords_rd   = 0;
+  	NumCoords_wr   = 0;
+  	NumCoords_temp = 0;
+  	NumCoords_vint = 0;
+	NumCoords_vaux = 0;
+	
+  	MaxCoords_rd   = 12;
+  	MaxCoords_wr   = 12;
+  	MaxCoords_temp = 10;
+  	MaxCoords_vint = 10;
+  	MaxCoords_vaux = 10;
+
+	allcoords_rd.length   = 0;
+  	allcoords_wr.length   = 0;
+  	allcoords_temp.length = 0;
+  	allcoords_vint.length = 0;
+  	allcoords_vaux.length = 0;
+
+	alldata_rd.length   = 0;
+  	alldata_wr.length   = 0;
+  	alldata_temp.length = 0;
+  	alldata_vint.length = 0;
+  	alldata_vaux.length = 0;
+  }
+  
+  function RequestCDMA()
+  {
+  	var xmlhttp;
+  	if (isBusy)
+  	{
+  		return;
+  	}
+  	if (window.XMLHttpRequest)
+  	{
+  		xmlhttp = new XMLHttpRequest();
+  	}
+  	else
+  	{
+  		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+
+	///////////// ASYNCHRONOUS 
+	xmlhttp.onreadystatechange=function()
+  	{
+		if (xmlhttp.readyState==4)
+		{
+			// Store the response from the server
+			var response = xmlhttp.responseText.split(",");
+			var response_rd   = response[0];
+			var response_wr   = response[1];
+			var response_temp = response[2];
+			var response_vint = response[3];
+			var response_vaux = response[4];
+			
+	  		// xycoord[0] will be x value, xycoord[1] will be y value
+			var xycoord_rd   = new Array();
+			var xycoord_wr   = new Array();
+			var xycoord_temp = new Array();
+			var xycoord_vint = new Array();
+			var xycoord_vaux = new Array();
+	  		var coord_rd;
+	  		var coord_wr;
+	  		var coord_temp;
+	  		var coord_vint;
+	  		var coord_vaux;
+
+			// 500: graph height in pixels; 0: min value on Y-scale
+			// 0.035: distribution on y-axis; (Y-scale values Range)/(Y-scale pixels Range )
+			// Y-SCALE IS: 0 to 14
+			//   Y-values start from 0-14; graph plot area 500 pixels (50 above and below are left blank)
+			//   (14-0)/(600-100) = 14/500 = 0.028
+			//   xycoord_rd[1] = 550 - ((response_rd - 0)/.028);
+			//
+			// Y-SCALE IS: 0 to 22
+			// 500: graph height in pixels; 0: min value on Y-scale
+			// Y-values start from 0-22; graph plot area 500 pixels (50 above and below are left blank)
+			// (22-0)/(600-100) = 22/500 = 0.044
+			//
+			// Y-SCALE IS: 0 to 24
+			// 500: graph height in pixels; 0: min value on Y-scale
+			// Y-values start from 0-22; graph plot area 500 pixels (50 above and below are left blank)
+			// (23-0)/(600-100) = 23/500 = 0.046
+			xycoord_rd[1]   = 550 - ((response_rd   -  0)/.046);		// 23/500 = 0.048
+	  		xycoord_wr[1]   = 550 - ((response_wr   -  0)/.046);		// 23/500 = 0.048
+	  		xycoord_temp[1] = 200 - ((response_temp - 20)/.550);		//110/200 = 0.550
+	  		xycoord_vint[1] = 150 - ((response_vint -  0)/.046);		//  7/150 = 0.046
+	  		xycoord_vaux[1] = 150 - ((response_vaux -  0)/.046);		//  7/150 = 0.046
+
+			/* Coordinate array filled to the maximum. This new value will take the last spot and first value will eventually be lost. */
+			if(NumCoords_rd == MaxCoords_rd)
+			{ xycoord_rd[0] = 50 + (NumCoords_rd-1)*(500/(MaxCoords_rd-1)); 	}
+			else 
+			{ xycoord_rd[0] = 50 + (NumCoords_rd)*(500/(MaxCoords_rd-1)); 		}
+
+			if(NumCoords_wr == MaxCoords_wr)
+			{ xycoord_wr[0] = 50 + (NumCoords_wr-1)*(500/(MaxCoords_wr-1)); 	}
+	  		else
+	  		{ xycoord_wr[0] = 50 + (NumCoords_wr)*(500/(MaxCoords_wr-1)); 		}
+
+			if(NumCoords_temp == MaxCoords_temp)
+			{ xycoord_temp[0] = 50 + (NumCoords_temp-1)*(300/(MaxCoords_temp-1)); 	}
+	  		else
+	  		{ xycoord_temp[0] = 50 + (NumCoords_temp)*(300/(MaxCoords_temp-1)); 	}
+
+			if(NumCoords_vint == MaxCoords_vint)
+			{ xycoord_vint[0] = 50 + (NumCoords_vint-1)*(300/(MaxCoords_vint-1)); 	}
+	  		else
+	  		{ xycoord_vint[0] = 50 + (NumCoords_vint)*(300/(MaxCoords_vint-1)); 	}
+
+			if(NumCoords_vaux == MaxCoords_vaux)
+			{ xycoord_vaux[0] = 50 + (NumCoords_vaux-1)*(300/(MaxCoords_vaux-1)); 	}
+	  		else
+	  		{ xycoord_vaux[0] = 50 + (NumCoords_vaux)*(300/(MaxCoords_vaux-1)); 	}
+
+			// Form coordinate string "x,y"
+	  		coord_rd   = xycoord_rd.join();
+	  		coord_wr   = xycoord_wr.join();
+	  		coord_temp = xycoord_temp.join();
+	  		coord_vint = xycoord_vint.join();
+	  		coord_vaux = xycoord_vaux.join();
+
+			/*
+			 * IF (coord < max coord)
+			 *    Coordinate array is not full.  Add coordinate to the end of the array.
+			 * ELSE
+			 *   Coordinate array filled to the maximum.  The coordinate
+			 *   array is shifted and the first value is lost.  Becasue of
+			 *   the shift, x values need to be recalculated for all
+			 *   coordinates. The new coordinate takes the last spot.
+			 */
+
+			 // READ performance coordinates
+			if(NumCoords_rd < MaxCoords_rd)
+			{
+	  			alldata_rd[NumCoords_rd] = response_rd;
+				allcoords_rd[NumCoords_rd] = coord_rd;
+				NumCoords_rd++;
+			}
+			else
+			{
+				alldata_rd.shift();
+				allcoords_rd.shift();
+	  			for (i = 0; i < MaxCoords_rd - 1; i++)
+	  			{
+					xycoord_rd = allcoords_rd[i].split(",");
+					xycoord_rd[0] -= (500/(MaxCoords_rd-1));
+					allcoords_rd[i] = xycoord_rd.join();
+	  			}
+				allcoords_rd[MaxCoords_rd-1] = coord_rd;
+				alldata_rd[MaxCoords_rd-1] = response_rd;
+			}
+
+			 // WRITE performance coordinates
+			if(NumCoords_wr < MaxCoords_wr)
+			{
+	  			alldata_wr[NumCoords_wr] = response_wr;
+				allcoords_wr[NumCoords_wr] = coord_wr;
+				NumCoords_wr++;
+			}
+			else
+			{
+				alldata_wr.shift();
+				allcoords_wr.shift();
+	  			for (i = 0; i < MaxCoords_wr - 1; i++)
+	  			{
+					xycoord_wr = allcoords_wr[i].split(",");
+					xycoord_wr[0] -= (500/(MaxCoords_wr-1));
+					allcoords_wr[i] = xycoord_wr.join();
+	  			}
+				allcoords_wr[MaxCoords_wr-1] = coord_wr;
+				alldata_wr[MaxCoords_wr-1] = response_wr;
+			}
+
+			 // TEMPERATURE coordinates
+			if(NumCoords_temp < MaxCoords_temp)
+			{
+	  			alldata_temp[NumCoords_temp]   = response_temp;
+				allcoords_temp[NumCoords_temp] = coord_temp;
+				NumCoords_temp++;
+			}
+			else
+			{
+				alldata_temp.shift();
+				allcoords_temp.shift();
+	  			for (i = 0; i < MaxCoords_temp - 1; i++)
+	  			{
+					xycoord_temp = allcoords_temp[i].split(",");
+					xycoord_temp[0] -= (300/(MaxCoords_temp-1));
+					allcoords_temp[i] = xycoord_temp.join();
+	  			}
+				allcoords_temp[MaxCoords_temp-1] = coord_temp;
+				alldata_temp[MaxCoords_temp-1] = response_temp;
+			}
+			 // Vint coordinates
+			if(NumCoords_vint < MaxCoords_vint)
+			{
+	  			alldata_vint[NumCoords_vint]   = response_vint;
+				allcoords_vint[NumCoords_vint] = coord_vint;
+				NumCoords_vint++;
+			}
+			else
+			{
+				alldata_vint.shift();
+				allcoords_vint.shift();
+	  			for (i = 0; i < MaxCoords_vint - 1; i++)
+	  			{
+					xycoord_vint = allcoords_vint[i].split(",");
+					xycoord_vint[0] -= (300/(MaxCoords_vint-1));
+					allcoords_vint[i] = xycoord_vint.join();
+	  			}
+				allcoords_vint[MaxCoords_vint-1] = coord_vint;
+				alldata_vint[MaxCoords_vint-1] = response_vint;
+			}
+			 // Vaux coordinates
+			if(NumCoords_vaux < MaxCoords_vaux)
+			{
+	  			alldata_vaux[NumCoords_vaux]   = response_vaux;
+				allcoords_vaux[NumCoords_vaux] = coord_vaux;
+				NumCoords_vaux++;
+			}
+			else
+			{
+				alldata_vaux.shift();
+				allcoords_vaux.shift();
+	  			for (i = 0; i < MaxCoords_vaux - 1; i++)
+	  			{
+					xycoord_vaux = allcoords_vaux[i].split(",");
+					xycoord_vaux[0] -= (300/(MaxCoords_vaux-1));
+					allcoords_vaux[i] = xycoord_vaux.join();
+	  			}
+				allcoords_vaux[MaxCoords_vaux-1] = coord_vaux;
+				alldata_vaux[MaxCoords_vaux-1] = response_vaux;
+			}
+
+
+			//alert("plot the graph");
+
+	  		document.vdemo_form.AllCDMAValues_rd.value=alldata_rd.join(",");
+	  		document.vdemo_form.AllCDMAValues_wr.value=alldata_wr.join(",");
+	  		document.vdemo_form.AllCDMAValues_rd.value += ","+response_rd;
+	  		document.vdemo_form.AllCDMAValues_wr.value += ","+response_wr;
+			document.vdemo_form.AllCDMAValues_rd.scrollTop = document.vdemo_form.AllCDMAValues_rd.scrollHeight;
+			document.vdemo_form.AllCDMAValues_wr.scrollTop = document.vdemo_form.AllCDMAValues_wr.scrollHeight;
+
+			// Read, Write performance graphs
+			var S_graph = document.getElementById("svg_graph");
+   			var SD_graph = S_graph.getSVGDocument();
+   			var CDMA0L_rd = SD_graph.getElementById('CDMA0Line_rd');
+   			var CDMA0L_wr = SD_graph.getElementById('CDMA0Line_wr');
+   			CDMA0L_rd.setAttribute("points", allcoords_rd.join(" "));	// Change the graph to use the new coordinates
+   			CDMA0L_wr.setAttribute("points", allcoords_wr.join(" "));
+
+			// Temperature graph
+			var S_graph = document.getElementById("svg_graph_temp");
+   			var SD_graph = S_graph.getSVGDocument();
+   			var CDMA0L_temp = SD_graph.getElementById('CDMA0Line_temp');
+   			CDMA0L_temp.setAttribute("points", allcoords_temp.join(" "));	// Change the graph to use the new coordinates
+
+			// Voltage graphs
+			var S_graph = document.getElementById("svg_graph_voltage");
+   			var SD_graph = S_graph.getSVGDocument();
+   			var CDMA0L_vint = SD_graph.getElementById('CDMA0Line_vint');
+   			var CDMA0L_vaux = SD_graph.getElementById('CDMA0Line_vaux');
+   			CDMA0L_vint.setAttribute("points", allcoords_vint.join(" "));	// Change the graph to use the new coordinates
+   			CDMA0L_vaux.setAttribute("points", allcoords_vaux.join(" "));
+
+			isBusy = false;
+			setTimeout('RequestCDMA()', 1000);
+  		}
+	}
+
+	if(userStopped == false)
+	{
+  	        isBusy = true;
+	  	// Send the post request for a data point
+		try
+		{
+	  	  	xmlhttp.open("POST", "cmd/cdmaxhr", false);
+			xmlhttp.send();
+		}
+		catch(e)
+		{
+			alert("server is down \n");
+			isBusy = false;
+		}
+		/////////////// SYNCHRONOUS
+	}
+	if(userStopped == true)
+	{
+	        //$ clearInterval(GraphIntervalID);
+		PollStatistics = false;
+		isBusy = false;
+	}
+  }
+
+  function GetCDMA()
+  {
+	userStopped = false;
+
+	if( liveError == 1 )
+	{
+	    liveError = 0;
+	    show_vdemo();	// redo setup with "Live Video NO"
+        }
+
+	// Set time frame for sending requests for a new data point
+	//$ GraphIntervalID = setInterval(RequestCDMA, 1000);
+	setTimeout('RequestCDMA()', 1000);
+	PollStatistics = true;
+  }
+
+  function StopCDMA()
+  {
+  	// Clear the timer so it will no longer send requests
+        //$ clearInterval(GraphIntervalID);
+	PollStatistics = false;
+	userStopped = true;
+	
+	var dummy;
+	setTimeout("dummy=1", 1000);	// incase last call for RequestCDMA
+
+	var xmlhttp;
+	isBusy = true;
+  	if (window.XMLHttpRequest)
+  	{
+  		xmlhttp = new XMLHttpRequest();
+  	}
+  	else
+  	{
+  		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  	}
+
+	// ASYNCHRONOUS
+	xmlhttp.onreadystatechange=function()
+        {
+  	  if (xmlhttp.readyState == 4)
+	  {
+	    isBusy = false;
+  	  }
+        }
+
+	// Send the post request for a data point
+	var req = "cmd/vdemoxhr,"+1+","+0+","+0+","+0;
+	try
+	{
+	  	xmlhttp.open("POST", req, false);
+		xmlhttp.send();
+	}
+	catch(e)
+	{
+		alert("server is down \n");
+		isBusy = false;
+	}
+  }
+
+
+  var theIndex=0;
+  var theScaled=0;
+  var thePattern=0;
+  var theLive=0;
+  var liveError=0;
+  var regress=0;
+  var regress_mode=0;
+
+  function regress_vdemo()
+  {
+    // start no-live
+    if(regress==0)
+    {
+        document.all.vlive[1].checked = true;
+	document.all.pattern[0].checked = false;
+	document.all.pattern[1].checked = false;
+        regress=1;
+    }
+
+    // start live
+    if(regress==100)
+    {
+        document.all.vlive[0].checked = true;
+	document.all.pattern[0].checked = false;
+	document.all.pattern[1].checked = false;
+        regress=1;
+    }
+
+    if(regress==1)
+    {
+        document.all.vtest[0].checked = true;
+    }
+    if(regress==2)
+    {
+        document.all.vtest[1].checked = true;
+    }
+    if(regress==3)
+    {
+        document.all.vtest[2].checked = true;
+    }
+    if(regress==4)
+    {
+        document.all.vtest[3].checked = true;
+    }
+    if(regress==5)
+    {
+        document.all.vtest[4].checked = true;
+    }
+    if(regress==6)
+    {
+        document.all.vtest[5].checked = true;
+    }
+    if(regress==7)
+    {
+        if(regress_mode == 1)
+            document.all.vlive[0].checked = true;
+        document.all.vtest[6].checked = true;
+    }
+    if(regress==8)
+    {
+        if(regress_mode == 1)
+            document.all.vlive[0].checked = true;
+	document.all.pattern[0].checked = true;
+    }
+    if(regress==9)
+    {
+        if(regress_mode == 1)
+            document.all.vlive[0].checked = true;
+	document.all.pattern[1].checked = true;
+    }
+
+    regress += 1;
+    if(regress==10)
+    {
+        if(regress_mode==0)
+        {
+	  // Now, start LIVE
+	  regress = 100;
+          regress_mode=1;
+        }
+        else
+        {
+          regress = 0;
+          regress_mode=0;
+        }
+    }
+
+    setTimeout('show_vdemo()',200);
+    setTimeout('regress_vdemo()',10000);
+  }
+
+
+  function show_vdemo()
+  {
+        if(PollStatistics == true)
+        {
+            StopCDMA();
+        }  
+
+	///////////////////////////////////////////
+	// Get the Full Stream selection
+	if(document.all.vtest[0].checked)
+	theIndex = 1;		// full stream 0
+
+	else if(document.all.vtest[1].checked)
+	theIndex = 2;		// full stream 3
+
+	else 
+	theIndex = 0;	// Error
+
+	
+	///////////////////////////////////////////
+	// Get the Scaled Stream selection
+	var m = document.all.vtest.length;
+	//m = m-2;	// full streams 0,1 are already checked
+	theScaled=0;
+	var bin=0x1;
+	for(var l=2; l<m; l++)
+	{
+		if(document.all.vtest[l].checked)
+		{
+			theScaled = theScaled | bin;
+			theIndex= 3;		// any of the scaled streams
+			break;
+		}
+		bin = bin << 1;
+	}
+	if(theScaled == 0x10)	// All streams is 0x10 in Javascript
+	theScaled = 0xf;	// All streams is 0x0f in Webserver App
+
+
+	///////////////////////////////////////////
+	// Policy for Live Video selection
+	// Policies
+	// : if scaled stream2, scaled stream3 are selected
+	//   force Live Video to NO, disable Live Video YES
+	// : if live video setup is erroneous, 
+	//   force Live Video to NO, disable Live Video YES
+	if( (theScaled == 0x4) || (theScaled == 0x8) )
+	{
+  	    // theScaled: 0x4=stream2; 0x8=stream3
+	    document.all.vlive[0].disabled = true;
+	    document.all.vlive[1].checked = true;
+	}
+	else
+	    document.all.vlive[0].disabled = false;
+
+	///////////////////////////////////////////
+	// Get the Live/TPG selection
+	if(document.all.vlive[0].checked)
+	{
+	    theLive = 1;	// Live video
+	    if(curImage != 1)
+	    {
+	        document.all.setup.src = "images/k7_vdemo_full.JPG";
+		curImage = 1;
+	    }
+	}
+	else
+	{
+	    theLive = 0;	// Pattern vide
+	    if(curImage != 0)
+	    {
+	    	document.all.setup.src = "images/k7_vdemo_minimum.JPG";
+		curImage = 0;
+	    }
+	}
+        setTimeout('var dummy=1;',1000);	// allow the image to be loaded completely
+
+
+	///////////////////////////////////////////
+	// Get the Pattern selection
+	var s = document.all.pattern;
+	thePattern=0;
+	bin = 0x1;
+	for(var t=0; t<s.length; t++)
+	{
+		if(s[t].checked)
+			thePattern = thePattern | bin;
+		bin = bin << 1;
+	}
+
+	////////////////////////////////////////////////
+	// Send the Video selections out to the Target
+ 	var xmlhttp;
+  	if (isBusy)
+	{
+		return;
+  	}
+  	isBusy = true;
+	if (window.XMLHttpRequest)
+  	{
+  		xmlhttp = new XMLHttpRequest();
+  	}
+  	else
+  	{
+  		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+	///////// SYNCHRONOUS
+  	xmlhttp.onreadystatechange = function()
+        {
+	  if (xmlhttp.readyState == 4)
+	  {
+		// Store the response from the server
+		var response = xmlhttp.responseText;
+
+		//alert("response= "+response);
+		if(response == "1")
+		{
+		    alert("External Live Video stream0 is not available or\nSource video resolution is incorrect.\n"); 
+		    if(theScaled != 0xf)
+		    {
+            	liveError = 1;
+        	}
+		}
+		if(response == "2")
+		{
+		    alert("External Live Video stream1 is not available or\nSource video resolution is incorrect.\n"); 
+		    if(theScaled != 0xf)
+		    {
+            	liveError = 1;
+        	}
+		}
+		if(response == "3")
+		{
+		    alert("External Live Video stream0 and stream1 are not available or\nSource video resolution incorrect.\n"); 
+		    if(theScaled != 0xf)
+		    {
+            	liveError = 1;
+        	}
+		}
+
+		/////////////////////////////////////////////////////////////////////
+		// SLIDE SHOW IMPLEMENTATION
+		/////////////////////////////////////////////////////////////////////
+		//if(theScaled == 0x20)
+		//{
+		//	//var file_list = xmlhttp.responseText.split(",");
+		//	//alert("length="+ file_list.length);
+		//	//alert("files: "+file_list);
+		//	//
+		//	//for(var i=0; i< file_list.length; i++)
+		//	//{
+		//	//	var next_image_filename  = file_list[i];
+		//	//	alert(next_image_filename);
+		//	//}
+		//	//startSlideShow();
+		//	//
+                //      //var img1 = new Image();
+		//	//img1.src = "sdfs:"+next_image_filename;
+		//	//req = "sdfs:"+next_image_filename;
+		//	
+		//	var imhhttp;
+  	        //      if (window.XMLHttpRequest)
+  		//          imghttp = new XMLHttpRequest();
+  	        //        else
+  		//          imghttp = new ActiveXObject("Microsoft.XMLHTTP");
+		//	  
+		//	window.location.href = "slideshow.html";
+		//}
+		/////////////////////////////////////////////////////////////////////
+
+
+	        ///////////////////////////////////////////
+	        // enable all selections
+	        
+		// Policies
+		// : if scaled stream2, scaled stream3 are selected
+		//   force Live Video to NO, disable Live Video YES
+		// : if live video setup is erroneous, 
+		//   force Live Video to NO, disable Live Video YES
+	        if( (liveError == 1) )
+	        {
+	            document.all.vlive[0].checked = false;
+	            document.all.vlive[1].checked = true;
+	        }
+		if( (theScaled == 0x4) || (theScaled == 0x8) )
+		{
+	            document.all.vlive[0].disabled = true;
+	        }
+		else
+		{
+	            document.all.vlive[0].disabled = false;
+	        }
+	        document.all.vlive[1].disabled = false;
+	        document.all.pattern[0].disabled = false;
+	        document.all.pattern[1].disabled = false;
+	        var b = document.all.vtest.length;
+	        for(var c=0; c<b; c++)
+   	        {
+	            document.all.vtest[c].disabled = false;
+	        }
+
+		//isBusy = false;
+		//document.ptest_form.ptest_console.value += "\r\n";
+	        //document.ptest_form.ptest_console.value += response;
+		setTimeout('GetCDMA()',1000);
+		isBusy = false;
+          }
+        }
+
+	
+	///////////////////////////////////////////
+	// disable all selections
+	document.all.vlive[0].disabled = true;
+	document.all.vlive[1].disabled = true;
+	document.all.pattern[0].disabled = true;
+	document.all.pattern[1].disabled = true;
+	var b = document.all.vtest.length;
+	for(var c=0; c<b; c++)
+	{
+	    document.all.vtest[c].disabled = true;
+	}
+
+	// Send the post request for a data point
+	var req = "cmd/vdemoxhr,"+theLive+","+theIndex+","+theScaled+","+thePattern;
+	try
+	{
+	  	xmlhttp.open("POST", req, true);
+		xmlhttp.send();
+	}
+	catch(e)
+	{
+		alert("server is down \n");
+		isBusy = false;
+	}
+  }
+
+  function delay()
+  {
+      setTimeout('var dummy=1;',300);
+  }
+
+  //-->
+  </script>

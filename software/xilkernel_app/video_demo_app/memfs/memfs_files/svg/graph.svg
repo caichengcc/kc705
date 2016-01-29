@@ -1,0 +1,111 @@
+
+<!-- Copyright (c) 2007-2009 Xilinx, Inc.  All rights reserved.
+     created by Srinivasa Murthy Attili
+     Date: 2-Feb-2012
+-->
+
+<svg version="1.1"
+     baseProfile="full"
+     width="500px" height="600px"
+     viewBox="0 0 600 600" 
+     preserveAspectRatio="none"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+
+<!-- DRAW X-AXIS and Y-AXIS -->
+  <!-- draw y-axis, and arrow on the tip -->
+  <line x1="50" y1="10" x2="50" y2="550" stroke="#000000" stroke-width="2px"/>
+  <line x1="55"  y1="15" x2="50" y2="10" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="15" x2="50" y2="10" stroke="#000000" stroke-width="2px"/>
+    
+  <!-- draw x-axis, and arrow on the tip -->
+  <line x1="50"  y1="550" x2="560" y2="550" stroke="#000000" stroke-width="2px"/>
+  <line x1="555" y1="545" x2="560" y2="550" stroke="#000000" stroke-width="2px"/>
+  <line x1="555" y1="555" x2="560" y2="550" stroke="#000000" stroke-width="2px"/>
+
+<!-- Draw Segments (refer above notes) -->
+  <line x1="51" y1="550.00" x2="550" y2="550.00" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="528.26" x2="550" y2="528.26" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="506.52" x2="550" y2="506.52" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="484.78" x2="550" y2="484.78" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="463.04" x2="550" y2="463.04" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="441.30" x2="550" y2="441.30" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="419.56" x2="550" y2="419.56" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="397.82" x2="550" y2="397.82" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="376.08" x2="550" y2="376.08" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="354.34" x2="550" y2="354.34" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="332.60" x2="550" y2="332.60" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="310.86" x2="550" y2="310.86" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="289.13" x2="550" y2="289.13" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="267.39" x2="550" y2="267.39" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="245.65" x2="550" y2="245.65" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="223.91" x2="550" y2="223.91" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="202.17" x2="550" y2="202.17" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="180.43" x2="550" y2="180.43" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="158.69" x2="550" y2="158.69" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="136.95" x2="550" y2="136.95" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="115.21" x2="550" y2="115.21" stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="93.47"  x2="550" y2="93.47"  stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="71.73"  x2="550" y2="71.73"  stroke="#CCCCCC" stroke-width="2px"/>
+  <line x1="51" y1="50.00"  x2="550" y2="50.00"  stroke="#CCCCCC" stroke-width="2px"/>
+
+<!-- MARKERS -->
+  <!-- markers on y-axis for scale -->
+  <line x1="45" y1="550.00" x2="50" y2="550.00" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="528.26" x2="50" y2="528.26" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="506.52" x2="50" y2="506.52" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="484.78" x2="50" y2="484.78" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="463.04" x2="50" y2="463.04" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="441.30" x2="50" y2="441.30" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="419.56" x2="50" y2="419.56" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="397.82" x2="50" y2="397.82" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="376.08" x2="50" y2="376.08" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="354.34" x2="50" y2="354.34" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="332.60" x2="50" y2="332.60" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="310.86" x2="50" y2="310.86" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="289.13" x2="50" y2="289.13" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="267.39" x2="50" y2="267.39" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="245.65" x2="50" y2="245.65" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="223.91" x2="50" y2="223.91" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="202.17" x2="50" y2="202.17" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="180.43" x2="50" y2="180.43" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="158.69" x2="50" y2="158.69" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="136.95" x2="50" y2="136.95" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="115.21" x2="50" y2="115.21" stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="93.47"  x2="50" y2="93.47"  stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="71.73"  x2="50" y2="71.73"  stroke="#000000" stroke-width="2px"/>
+  <line x1="45" y1="50.00"  x2="50" y2="50.00"  stroke="#000000" stroke-width="2px"/>
+
+  <!-- Graph scale on y-axis -->
+  <text x="15" y="550.00" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">0</text>
+  <text x="15" y="528.26" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">1</text>
+  <text x="15" y="506.52" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">2</text>
+  <text x="15" y="484.78" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">3</text>
+  <text x="15" y="463.04" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">4</text>
+  <text x="15" y="441.30" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">5</text>
+  <text x="15" y="419.56" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">6</text>
+  <text x="15" y="397.82" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">7</text>
+  <text x="15" y="376.08" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">8</text>
+  <text x="15" y="354.34" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">9</text>
+  <text x="15" y="332.60" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">10</text>
+  <text x="15" y="310.86" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">11</text>
+  <text x="15" y="289.13" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">12</text>
+  <text x="15" y="267.39" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">13</text>
+  <text x="15" y="245.65" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">14</text>
+  <text x="15" y="223.91" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">15</text>
+  <text x="15" y="202.17" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">16</text>
+  <text x="15" y="180.43" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">17</text>
+  <text x="15" y="158.69" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">18</text>
+  <text x="15" y="136.95" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">19</text>
+  <text x="15" y="115.21" font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">20</text>
+  <text x="15" y="93.47"  font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">21</text>
+  <text x="15" y="71.73"  font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">22</text>
+  <text x="15" y="50.00"  font-family="Arial" font-size="14px" stroke="#0000ff" fill="#0000ff">23</text>
+
+<!-- Variables that hold plot data -->
+  <polyline id="CDMA0Line" points="" style="fill:none; stroke:#FF0000; stroke-width:2px; opacity:.8"/>
+  <polyline id="CDMA0Line_rd" points="" style="fill:none; stroke:#FF0000; stroke-width:2px; opacity:.5"/>
+  <polyline id="CDMA0Line_wr" points="" style="fill:none; stroke:#0000FF; stroke-width:2px; opacity:.5"/>
+
+</svg>
+

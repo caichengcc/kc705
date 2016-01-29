@@ -1,0 +1,154 @@
+\hypertarget{_oslib_time_8h}{
+\section{\-Oslib\-Time.h \-File \-Reference}
+\label{_oslib_time_8h}\index{\-Oslib\-Time.\-h@{\-Oslib\-Time.\-h}}
+}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_oslib_time_8h_a7b4dee7e021145222c5648feb6299dba}{\-Os\-Time\-Init} (void)
+\item 
+void \hyperlink{_oslib_time_8h_a7210cf3beaec77fa6fc83b0da8540f16}{\-Os\-Ms\-Delay} (\-Os\-Size\-T ms)
+\item 
+\-Os\-Size\-T \hyperlink{_oslib_time_8h_a28f0cde8d3326e67c1067b8dc095133b}{\-Os\-Time\-Get\-Tick\-Count} (void)
+\item 
+\-Os\-Size\-T \hyperlink{_oslib_time_8h_a24b36c07d680e34d28a15dfa18105012}{\-Os\-Time\-Ticks\-Per\-Ms} (void)
+\item 
+\-Os\-Size\-T \hyperlink{_oslib_time_8h_a83ddc5505e8d9d677b38f74f017d59ef}{\-Os\-Time\-Get\-Elapsed\-Ms} (\-Os\-Size\-T ms)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This confidential and proprietary code may be used only as authorized by licensing agreement from \-Xylon d.\-o.\-o. \-In the event of publication, the following notice is applicable\-:
+
+\-Copyright 2009 -\/ \-Xylon d.\-o.\-o. \-All rights reserved.
+
+\-The entire notice above must be reproduced on all authorized copies.
+
+\-Contains relevant \-O\-S specific time(r) wrappers, as well as the time handling functionality common to all the \-O\-Ss.
+
+
+\begin{DoxyPre}
+ MODIFICATION HISTORY:\end{DoxyPre}
+
+
+
+\begin{DoxyPre} Ver    Who  Date     Changes \par
+
+ -----  ---- -------- ------------------------------------------------------- \par
+
+ 1.00.a HJ  30/10/09  First release \par
+
+ \end{DoxyPre}
+ 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_oslib_time_8h_a7b4dee7e021145222c5648feb6299dba}{
+\index{\-Oslib\-Time.\-h@{\-Oslib\-Time.\-h}!\-Os\-Time\-Init@{\-Os\-Time\-Init}}
+\index{\-Os\-Time\-Init@{\-Os\-Time\-Init}!OslibTime.h@{\-Oslib\-Time.\-h}}
+\subsubsection[{\-Os\-Time\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Time\-Init (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_time_8h_a7b4dee7e021145222c5648feb6299dba}
+\-Initializes time services.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \-None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_time_8h_a7210cf3beaec77fa6fc83b0da8540f16}{
+\index{\-Oslib\-Time.\-h@{\-Oslib\-Time.\-h}!\-Os\-Ms\-Delay@{\-Os\-Ms\-Delay}}
+\index{\-Os\-Ms\-Delay@{\-Os\-Ms\-Delay}!OslibTime.h@{\-Oslib\-Time.\-h}}
+\subsubsection[{\-Os\-Ms\-Delay}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Ms\-Delay (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Size\-T}]{ms}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_time_8h_a7210cf3beaec77fa6fc83b0da8540f16}
+\-Performs a time delay in miliseconds.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ms} & contains the delay value in miliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_time_8h_a28f0cde8d3326e67c1067b8dc095133b}{
+\index{\-Oslib\-Time.\-h@{\-Oslib\-Time.\-h}!\-Os\-Time\-Get\-Tick\-Count@{\-Os\-Time\-Get\-Tick\-Count}}
+\index{\-Os\-Time\-Get\-Tick\-Count@{\-Os\-Time\-Get\-Tick\-Count}!OslibTime.h@{\-Oslib\-Time.\-h}}
+\subsubsection[{\-Os\-Time\-Get\-Tick\-Count}]{\setlength{\rightskip}{0pt plus 5cm}\-Os\-Size\-T \-Os\-Time\-Get\-Tick\-Count (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_time_8h_a28f0cde8d3326e67c1067b8dc095133b}
+\-Returns current system timer tick count.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \-None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Current tick count.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_time_8h_a24b36c07d680e34d28a15dfa18105012}{
+\index{\-Oslib\-Time.\-h@{\-Oslib\-Time.\-h}!\-Os\-Time\-Ticks\-Per\-Ms@{\-Os\-Time\-Ticks\-Per\-Ms}}
+\index{\-Os\-Time\-Ticks\-Per\-Ms@{\-Os\-Time\-Ticks\-Per\-Ms}!OslibTime.h@{\-Oslib\-Time.\-h}}
+\subsubsection[{\-Os\-Time\-Ticks\-Per\-Ms}]{\setlength{\rightskip}{0pt plus 5cm}\-Os\-Size\-T \-Os\-Time\-Ticks\-Per\-Ms (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_time_8h_a24b36c07d680e34d28a15dfa18105012}
+\-Returns number of system timer ticks per millisecond.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \-None.} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Number of ticks per millisecond.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_time_8h_a83ddc5505e8d9d677b38f74f017d59ef}{
+\index{\-Oslib\-Time.\-h@{\-Oslib\-Time.\-h}!\-Os\-Time\-Get\-Elapsed\-Ms@{\-Os\-Time\-Get\-Elapsed\-Ms}}
+\index{\-Os\-Time\-Get\-Elapsed\-Ms@{\-Os\-Time\-Get\-Elapsed\-Ms}!OslibTime.h@{\-Oslib\-Time.\-h}}
+\subsubsection[{\-Os\-Time\-Get\-Elapsed\-Ms}]{\setlength{\rightskip}{0pt plus 5cm}\-Os\-Size\-T \-Os\-Time\-Get\-Elapsed\-Ms (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Size\-T}]{ms}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_time_8h_a83ddc5505e8d9d677b38f74f017d59ef}
+\-Returns number of milliseconds elapsed from previous reading.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ms} & is value returned from previous reading.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Elapsed time in milliseconds.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-If parameter 0 is provided, returns absolute time from startup. 
+\end{DoxyNote}

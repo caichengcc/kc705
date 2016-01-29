@@ -1,0 +1,301 @@
+
+<!-- Copyright (c) 2007-2009 Xilinx, Inc.  All rights reserved.
+     created by Srinivasa Murthy Attili
+     Date: 2-Feb-2012
+-->
+
+<html>
+<meta http-equiv="X-UA-Compatible" value="IE=8">
+<head>
+
+  <title> Xilinx: XilKernel Demonstration over WebServer </title>
+  <link type="text/css" rel="stylesheet" href="css/main.css">
+  <script language="javascript">
+<!--
+
+  var isBusy = false;
+  var testIter;
+
+
+  function show()
+  {
+	////////// GET THE TEST ID ///////////
+	var m = document.all.ptest.length;
+        //var m = document.getElementById("id_ptest").length;
+	var theIndex = 0;	// default UART
+	for(var s=0; s<=m; s++)
+	{
+		if(document.all.ptest[s].checked)
+		{
+			theIndex = s;
+			break;
+		}
+	}
+
+	var xmlhttp;
+
+  	if (isBusy)
+	{
+		return;
+ 	}
+ 	isBusy = true;
+        testIter = 0;
+	//document.ptest_form.ptest_submit.disabled = "disbaled";
+	//document.vdemo_form.vdemo_submit_start.disabled = "disbaled";
+	//document.vdemo_form.vdemo_submit_stop.disabled = "disbaled";
+
+ 	if (window.XMLHttpRequest)
+  	{
+  		xmlhttp = new XMLHttpRequest();
+  	}
+  	else
+  	{
+  		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+
+  	xmlhttp.onreadystatechange=function()
+  	{
+		if (xmlhttp.readyState==4)
+		{
+			// Store the response from the server
+			var response = xmlhttp.responseText;
+			document.all.ptest_console.value += "\r\n";
+			document.all.ptest_console.value += response;
+			document.all.ptest_console.scrollTop = 
+			document.all.ptest_console.scrollHeight;
+			if( response != "DONE" )
+			{
+				// Send the post request for a data point. "one" suffix indicate continue test
+				var req = "cmd/uartxhr,"+testIter;	// default
+				if(theIndex==0)  req = "cmd/uartxhr,"+testIter;
+				if(theIndex==1)  req = "cmd/iicxhr,"+testIter;
+				if(theIndex==2)  req = "cmd/timerxhr,"+testIter;
+				if(theIndex==3)  req = "cmd/intrcxhr,"+testIter;
+				if(theIndex==4)  req = "cmd/dipswxhr,"+testIter;
+				if(theIndex==5)  req = "cmd/bramxhr,"+testIter;
+				if(theIndex==6)  req = "cmd/lcdxhr,"+testIter;
+				if(theIndex==7)  req = "cmd/ddr3cxhr,"+testIter;
+				if(theIndex==8)  req = "cmd/sdxhr,"+testIter;
+				if(theIndex==9)  req = "cmd/xadcxhr,"+testIter;
+				if(theIndex==10) req = "cmd/rotoryxhr,"+testIter;
+				if(theIndex==11) req = "cmd/nandxhr,"+testIter;
+				if(theIndex==12) req = "cmd/ledxhr,"+testIter;
+				if(theIndex==13) req = "cmd/pushbxhr,"+testIter;
+				testIter++;	// go to next step of test in next iteration (till DONE)
+				xmlhttp.open("POST", req,  true);
+				xmlhttp.send();
+			}
+
+			else
+			{
+				isBusy = false;
+	                        var b = document.all.ptest.length;
+	                        for(var c=0; c<b; c++)
+   	                        {
+	                            document.all.ptest[c].disabled = false;
+	                        }
+
+	                        //document.ptest_form.ptest_submit.disabled = "";
+                              	//document.vdemo_form.vdemo_submit_start.disabled = "";
+                               	//document.vdemo_form.vdemo_submit_stop.disabled = "";
+			}
+		}
+	}
+	// Send the post request for a data point. "zero" suffix indicate begin of test
+        if(testIter == 0)
+        {
+            var testName;
+	    if(theIndex==0)
+	    {
+		testName = "Executing UART test";
+		xmlhttp.open("POST", "cmd/uartxhr,"+0,  true);
+	    }
+	    if(theIndex==1)
+	    {
+		testName = "Executing IIC test";
+		xmlhttp.open("POST", "cmd/iicxhr,"+0,   true);
+	    }
+	    if(theIndex==2)
+	    {
+		testName = "Executing TIMER test";
+		xmlhttp.open("POST", "cmd/timerxhr,"+0, true);
+	    }
+	    if(theIndex==3)
+	    {
+		testName = "Executing INTC test";
+		xmlhttp.open("POST", "cmd/intrcxhr,"+0, true);
+	    }
+	    if(theIndex==4)
+	    {
+		testName = "Executing DIP SWITCH test";
+		xmlhttp.open("POST", "cmd/dipswxhr,"+0, true);
+	    }
+	    if(theIndex==5)
+	    {
+		testName = "Executing BRAM test";
+		xmlhttp.open("POST", "cmd/bramxhr,"+0,  true);
+	    }
+	    if(theIndex==6)
+	    {
+		testName = "Executing LCD test";
+		xmlhttp.open("POST", "cmd/lcdxhr,"+0,   true);
+	    }
+	    if(theIndex==7) 
+	    {
+		testName = "Executing DDR3 test";
+		xmlhttp.open("POST", "cmd/ddr3cxhr,"+0, true);
+	    }
+	    if(theIndex==8)
+	    {
+		testName = "Executing SD test";
+		xmlhttp.open("POST", "cmd/sdxhr,"+0,    true);
+	    }
+	    if(theIndex==9)
+	    {
+		testName = "Executing XADC test";
+		xmlhttp.open("POST", "cmd/xadcxhr,"+0,  true);
+	    }
+	    if(theIndex==10)
+	    {
+		testName = "Executing ROTARY test";
+		xmlhttp.open("POST", "cmd/rotoryxhr,"+0,true);
+	    }
+	    if(theIndex==11) 
+	    {
+		testName = "Executing NAND FLASH test";
+		xmlhttp.open("POST", "cmd/nandxhr,"+0,  true);
+	    }
+	    if(theIndex==12)
+	    {
+		testName = "Executing LED test";
+		xmlhttp.open("POST", "cmd/ledxhr,"+0,   true);
+	    }
+	    if(theIndex==13)
+       	    {
+		testName = "Executing PUSH BUTTON test";
+		xmlhttp.open("POST", "cmd/pushbxhr,"+0, true);
+	    }    
+	    xmlhttp.send();
+
+	    var b =  document.all.ptest.length;
+	    var m = document.getElementById("id_ptest");
+	    for(var c=0; c<b; c++)
+	    {
+	        document.all.ptest[c].disabled = true;
+	    }
+	    document.all.ptest_console.value += "\r\n";
+	    document.all.ptest_console.value += testName;
+	    document.all.ptest_console.scrollTop = document.all.ptest_console.scrollHeight;
+	    testIter=1;	// test with next step
+        }
+  }
+
+  //-->
+  </script>
+  </head>
+
+</head>
+<body>
+
+<div id="container">
+<b class="rtop">
+  <b class="r1"></b> <b class="r2"></b> <b class="r3"></b> <b class="r4"></b>
+</b>
+
+<img src="images/logo.gif" style="padding-left:20px" target="SelectFrame"></img>
+
+<h1>Kintex-7 Embedded TRD - BIST Demonstration over WebServer </h1>
+<p STYLE="font-family : monospace; font-size : 10pt"> 
+Hello! This is a demonstration of Embedded Webserver created using lwip. Using the
+lwip networking stack, a Webserver can be easily embedded into your software application.
+A Webserver provides a method to monitor the embedded platform via an Internet browser.
+This example webpage demostrates the <b><u>BUILT-IN SELF-TESTS (BIST)</u></b> execute over a Webserver. 
+This webpage facilitates selecting from the BIST tests and viewing the result in the console.
+</p>
+<br>
+<p STYLE="font-family : monospace; font-size : 10pt"> 
+<font color="red"> <b> Before selecting the SD test, ensure that SD CARD is plugged into the card slot.</b> </font>
+</p>
+<br>
+
+<div align="left">
+
+<form name="vdemo_form">
+<table border="1" cellpadding="1" width="85%">
+<tbody>
+  <span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;" WIDTH="30%">
+  <tr style="height:20px">
+  <td bgcolor="yellow" vertical-align: top; align="left" style="font-size: 12px; font-family: tahoma,geneva,sans-serif; border:1px groove red" >
+  <b>BUILT IN SELF TESTS (BIST) CONTROL PANEL</b>
+  </td>
+
+  <td bgcolor="yellow" vertical-align: top; align="left" style="font-size: 12px; font-family: tahoma,geneva,sans-serif; border:1px groove red" >
+  <b>SETUP</b>
+  </td>
+  </tr>
+
+  <tr style="height:300px">
+  <td bgcolor="teal" style="vertical-align:top; align="left"; font-size: 10px; font-color="white"; font-family: tahoma,geneva,sans-serif; border:1px groove red" WIDTH="30%">
+	<p><b>
+	<font color="white">
+	<span style="font-size: 12px;font-family: tahoma,geneva,sans-serif;">
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> UART          </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> I2C EEPROM    </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> TIMER         </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> INTERRUPT     </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> DIP SWITCHES  </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> BRAM          </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> LCD           </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> DDR3 DRAM     </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> SD            </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> XADC          </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> ROTARY SWITCH </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> NAND FLASH    </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> LEDs          </br>
+	<input id="id_ptest" name="ptest" type="radio" onClick="show()" /> PUSH BUTTONS  </br>
+        </b></p>
+	</span>
+  </td>
+
+  <td style="vertical-align: top; align="centre"; font-family: tahoma,geneva,sans-serif; border:1px groove red" WIDTH="50%">
+  <img name="setup" src="images/k7_setup.JPG" height="300" width="80%"/>
+  </td>
+  </tr>
+  </tbody>
+  </table>	  <!-- end of TABLE -->
+
+      
+    <table border="1" cellpadding="1" style="width:85%" >
+    <tbody>
+    <span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">    
+	<!-- ****** ROW 1 ****** -->
+        <tr>
+	<!-- COL 1 -->
+	<td colspan="4" bgcolor="yellow" vertical-align: top; align="center" style="font-size: 12px; font-family: tahoma,geneva,sans-serif; border:1px groove red" WIDTH="20%">
+        <b>CONSOLE </b>
+        </td>
+        </tr>
+
+	<!-- ROW 2 -->
+        <tr>
+        <!-- COL 1 -->
+        <td bgcolor="white">
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">
+	<textarea name="ptest_console" readonly="readonly" style="width:100%" rows="15" class="textoutput" STYLE="font-family : monospace; font-size : 11pt">
+	</textarea>
+	</td>
+        </tr>
+    </tbody>
+    </table>
+    </br>
+    </br>
+	<span style="font-size: 12px;"><span style="font-family: tahoma,geneva,sans-serif;">
+	<font color="blue">
+	<b> <sub> © Copyright 2012 Xilinx Inc. </sub> </b>
+</br>
+</br>
+</form>
+</body>
+</html>
+
+

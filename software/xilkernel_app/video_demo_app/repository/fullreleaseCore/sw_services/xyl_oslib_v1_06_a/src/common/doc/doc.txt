@@ -1,0 +1,145 @@
+
+/*! \page p1 Disclaimer
+
+All rights reserved. This manual may not be reproduced or utilized without the prior written permission 
+issued by Xylon. Trademarks contained herein belong to their respective holders.
+This publication has been carefully checked for accuracy. However Xylon does not assume any responsibility 
+for the contents or use of any product described herein. Xylon reserves the right to make any changes to 
+product without further notice. Our customers should ensure to take appropriate action so that their use 
+of our products does not infringe upon any patents.
+*/
+
+/*! \page p2 Introduction
+
+\section p2s1 Document identifier
+UM_xyl_oslib_common_1_0_0
+
+\section  p2s2 Purpose
+The purpose of this document is to describe the general idea of the xyl_oslib library \n 
+and document the common xyl_oslib library interface. 
+
+\section  p2s3 References
+The following documents were used as sources of information:
+- UM_xyl_oslib_linux_1_0_0
+
+\section  p2s4 Targeted audience
+This document is targeted for software developers that write device drivers for different operating systems.
+
+
+\section  p2s5 Pre-required knowledge
+Reader of this document should have basic knowledge of:
+\li device drivers on common operating systems
+\li basic driver interfaces on common operating systems
+\li bus architectures available
+
+Reader of this document should have advanced knowledge of:
+- ANSI C language
+ 
+*/
+
+/*! \page p3 Functional description
+
+\section  p3s1 General idea
+Device driver for some specific hardware is usually written multiple times for each operating system and
+each physical bus used to access the hardware.
+
+For example for UART and I2C hardware blocks on two different operating systems and accessible over two
+different busses you will have following 8 variations. Each of them requiring a separate driver:
+\li UART, Linux OS, PCI bus
+\li UART, Linux OS, USB bus
+\li UART, WINCE OS, PCI bus
+\li UART, WINCE OS, USB bus
+\li I2C, Linux OS, PCI bus
+\li I2C, Linux OS, USB bus
+\li I2C, WINCE OS, PCI bus
+\li I2C, WINCE OS, USB bus
+
+Since driver writing is expensive process we try to isolate common elements in drivers and reduce the 
+amount of code and effort while to minimal degree.
+
+In the example above following 10 parts can be isolated as separate modules:
+\li 1. Linux I2C driver 
+\li 2. Linux UART driver
+\li 3. WINCE I2C driver
+\li 4. WINCE UART driver
+\li 5. I2C generic part of driver
+\li 6. UART generic part of driver
+\li 7. WINCE PCI BUS interface
+\li 8. WINCE USB BUS interface
+\li 9. Linux PCI BUS interface
+\li 10.Linux USB BUS interface
+
+By partioning the drivers in such a way we at firs end up with more modules then before. Fortunatelly
+some of this modules are reusable and this adds value:
+
+1. - 4. are the OS dependant drivers (upper driver layer) - this layer if driver has to be written 
+for each new driver so it is not reusable but advantage is that it is actually only a thin wrapper
+
+5. and 6. are the generic hardware drivers. They describe the hardware functionality. Generic drivers
+ for this hardware can be reused for each new port of driver to some new OS/BUS combination.
+
+7. and 8. are WINCE implementation of the different BUS access interfaces. This part is common for
+ all drivers that will be written on WINE and can be reused.
+ 
+9. and 10. are Linux implementation of the different BUS access interfaces. This part is common for
+ all drivers that will be written on WINE and can be reused.
+ 
+ 
+ 
+
+\section  p3s2 Layered driver architecture
+
+The driver layered architecture is following:\n
+<b>  1. OS driver (OSDRV) </b>\n
+	OSDRV is the OS dependant part of driver. It is made specificaly for the targeted OS and the targeted BUS
+	( e.g. Linux driver for UART over USB). Usually the OSDRV is just a thin code wrapper required by OS for 
+	particualr type of driver. Main driver functionality should reside in next layer.
+
+<b> 2. Generic driver (GENDRV) </b> \n
+	GENDRV is the generic part of the driver that describes the hardware functionality (e.g. generic UART driver
+	would define UART registers and some common functions for usuall UART operation).
+	Generic driver is completely independent on the OS or the BUS.
+	
+<b> 3. OS library (OSLIB) </b>\n
+	OSLIB is library written for a specific OS system. This library provides a common interface 
+	which generic drivers can use on any OS / BUS combination. It provides the interface to the 
+	specific OS types, synchronisation mechanisms, bus access mechanisms and other.
+\n	
+\note Driver layers are separated only when they are in the source form. They are compiled and linked 
+into a single driver binary.
+\n
+\n
+With such layered architecture we minimize the amount of work required when writting driver for new OS/BUS
+combination:
+- OSLIB has to be written only once for each OS. 
+- GENDRV is part of driver that has to be written only once for given hardware. 
+- OSDRV has to be written each time we implement a new driver for some OS/BUS.
+
+
+\section  p3s3 Oslib interface
+
+Xylon OS library (xyl_oslib) provides interface to all of the OS specific functions that are required by a driver.
+By using this library generic driver (GENDRV) can be made completely OS and BUS independent.
+
+Following interface groups are provided by the oslib:
+\par Os types
+	It provides typical types (pointers, unsigned 8,16,32). See \ref Oslibtypes.h
+\par OS debug 
+	Provides debug macros for printing, asserting. See \ref OslibDebug.h
+\par OS hw access 
+	Provides access functions to hardware register. Hardware access is independant of the bus type. \n
+	Bus independancy is obtained using the pointer to struct _OsRegRangeT which is argument to all access functions. \n
+	Functions \ref OsRegRangeInit and \ref OsRegRangeDeinit provide init deinit interface for the bus access descriptor.
+	OsHwResourceT represents the hardware resource input structure\n
+	struct _OsRegRangeT represents the OSLIB descriptor for accessing hardware registers.
+	See \ref OslibHwAccess.h
+	\n
+	- note: for documentation of structures struct _OsRegRangeT and OsHwResourceT look in the oslib implementation document
+	(e.g. UM_xyl_oslib_linux_1_0_0)
+\par OS spinlock 
+	Provides interface for spinlocks, see \ref OslibSpinLock.h
+\par OS misc 
+	Provides interface for miscellaneous OS functions \ref OslibMisc.h
+
+**/
+

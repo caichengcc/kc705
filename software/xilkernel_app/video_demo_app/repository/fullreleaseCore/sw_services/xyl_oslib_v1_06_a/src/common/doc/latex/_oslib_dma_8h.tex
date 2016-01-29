@@ -1,0 +1,215 @@
+\hypertarget{_oslib_dma_8h}{
+\section{\-Oslib\-Dma.h \-File \-Reference}
+\label{_oslib_dma_8h}\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}}
+}
+\subsection*{\-Data \-Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_os_dma_common_buffer_config_t}{\-Os\-Dma\-Common\-Buffer\-Config\-T}
+\item 
+struct \hyperlink{struct_os_dma_common_buffer_descr_t}{\-Os\-Dma\-Common\-Buffer\-Descr\-T}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\-Os\-Dma\-Common\-Buffer\-T $\ast$ \hyperlink{_oslib_dma_8h_a4cb29d1c4e39297edfe6dfbd5102c251}{\-Os\-Dma\-Common\-Buffer\-Construct} (\-Os\-Dma\-T $\ast$p\-Dma, \hyperlink{struct_os_dma_common_buffer_config_t}{\-Os\-Dma\-Common\-Buffer\-Config\-T} $\ast$p\-Dma\-Common\-Buffer\-Config)
+\item 
+void \hyperlink{_oslib_dma_8h_a59e42e440a71dc76dff26e32ed210de5}{\-Os\-Dma\-Common\-Buffer\-Destruct} (\-Os\-Dma\-Common\-Buffer\-T $\ast$p\-Dma\-Common\-Buffer)
+\item 
+void \hyperlink{_oslib_dma_8h_ad0411b8ff435ff37cf0690b730ff9451}{\-Os\-Dma\-Common\-Buffer\-Get\-Params} (\-Os\-Dma\-Common\-Buffer\-T $\ast$p\-Dma\-Common\-Buffer, \hyperlink{struct_os_dma_common_buffer_descr_t}{\-Os\-Dma\-Common\-Buffer\-Descr\-T} $\ast$p\-Dma\-Common\-Buffer\-Descr)
+\item 
+void \hyperlink{_oslib_dma_8h_a9187a9be3f43d6684bf02e61e87b8990}{\-Os\-Dma\-In\-Prepare} (\-Os\-Dma\-Common\-Buffer\-T $\ast$p\-Dma\-Common\-Buffer)
+\item 
+void \hyperlink{_oslib_dma_8h_ae988cbc11e2de296867a4d11d683535b}{\-Os\-Dma\-In\-Done} (\-Os\-Dma\-Common\-Buffer\-T $\ast$p\-Dma\-Common\-Buffer)
+\item 
+void \hyperlink{_oslib_dma_8h_adc9188c5d9ac01bead7d6ac8652b6087}{\-Os\-Dma\-Out\-Prepare} (\-Os\-Dma\-Common\-Buffer\-T $\ast$p\-Dma\-Common\-Buffer)
+\item 
+void \hyperlink{_oslib_dma_8h_ab96e2b94335438fbbffb8a02fb85deff}{\-Os\-Dma\-Out\-Done} (\-Os\-Dma\-Common\-Buffer\-T $\ast$p\-Dma\-Common\-Buffer)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This confidential and proprietary code may be used only as authorized by licensing agreement from \-Xylon d.\-o.\-o. \-In the event of publication, the following notice is applicable\-:
+
+\-Copyright 2011 -\/ \-Xylon d.\-o.\-o. \-All rights reserved.
+
+\-The entire notice above must be reproduced on all authorized copies.
+
+\-Contains relevant \-O\-S specific \-D\-M\-A functionality common to all the \-O\-Ss.
+
+
+\begin{DoxyPre}
+ MODIFICATION HISTORY:\end{DoxyPre}
+
+
+
+\begin{DoxyPre} Ver    Who  Date     Changes \par
+
+ -----  ---- -------- ------------------------------------------------------- \par
+
+ 1.00.a HJ  22/04/11  First release \par
+
+ \end{DoxyPre}
+ 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_oslib_dma_8h_a4cb29d1c4e39297edfe6dfbd5102c251}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-Common\-Buffer\-Construct@{\-Os\-Dma\-Common\-Buffer\-Construct}}
+\index{\-Os\-Dma\-Common\-Buffer\-Construct@{\-Os\-Dma\-Common\-Buffer\-Construct}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-Common\-Buffer\-Construct}]{\setlength{\rightskip}{0pt plus 5cm}\-Os\-Dma\-Common\-Buffer\-T$\ast$ \-Os\-Dma\-Common\-Buffer\-Construct (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-T $\ast$}]{p\-Dma, }
+\item[{{\bf \-Os\-Dma\-Common\-Buffer\-Config\-T} $\ast$}]{p\-Dma\-Common\-Buffer\-Config}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_a4cb29d1c4e39297edfe6dfbd5102c251}
+\-Creates a \-D\-M\-A common buffer.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma} & is a \-D\-M\-A object pointer. \\
+\hline
+{\em p\-Dma\-Common\-Buffer\-Config} & is a pointer to the \-D\-M\-A common buffer containing a buffer configuration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Pointer to a newly created \-D\-M\-A common buffer object.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_dma_8h_a59e42e440a71dc76dff26e32ed210de5}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-Common\-Buffer\-Destruct@{\-Os\-Dma\-Common\-Buffer\-Destruct}}
+\index{\-Os\-Dma\-Common\-Buffer\-Destruct@{\-Os\-Dma\-Common\-Buffer\-Destruct}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-Common\-Buffer\-Destruct}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Dma\-Common\-Buffer\-Destruct (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-Common\-Buffer\-T $\ast$}]{p\-Dma\-Common\-Buffer}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_a59e42e440a71dc76dff26e32ed210de5}
+\-Destroys a \-D\-M\-A common buffer.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma\-Common\-Buffer} & is a \-D\-M\-A common buffer object pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_dma_8h_ad0411b8ff435ff37cf0690b730ff9451}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-Common\-Buffer\-Get\-Params@{\-Os\-Dma\-Common\-Buffer\-Get\-Params}}
+\index{\-Os\-Dma\-Common\-Buffer\-Get\-Params@{\-Os\-Dma\-Common\-Buffer\-Get\-Params}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-Common\-Buffer\-Get\-Params}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Dma\-Common\-Buffer\-Get\-Params (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-Common\-Buffer\-T $\ast$}]{p\-Dma\-Common\-Buffer, }
+\item[{{\bf \-Os\-Dma\-Common\-Buffer\-Descr\-T} $\ast$}]{p\-Dma\-Common\-Buffer\-Descr}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_ad0411b8ff435ff37cf0690b730ff9451}
+\-Obtains a \-D\-M\-A common buffer descriptor.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma\-Common\-Buffer} & is a \-D\-M\-A common buffer object pointer. \\
+\hline
+{\em p\-Dma\-Common\-Buffer\-Descr} & is a pointer to the \-D\-M\-A common buffer descriptor to be filled out.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_dma_8h_a9187a9be3f43d6684bf02e61e87b8990}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-In\-Prepare@{\-Os\-Dma\-In\-Prepare}}
+\index{\-Os\-Dma\-In\-Prepare@{\-Os\-Dma\-In\-Prepare}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-In\-Prepare}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Dma\-In\-Prepare (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-Common\-Buffer\-T $\ast$}]{p\-Dma\-Common\-Buffer}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_a9187a9be3f43d6684bf02e61e87b8990}
+\-Prepares the system for a \-D\-M\-A in operation (cache handling...).
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma\-Common\-Buffer} & is a \-D\-M\-A common buffer object pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_dma_8h_ae988cbc11e2de296867a4d11d683535b}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-In\-Done@{\-Os\-Dma\-In\-Done}}
+\index{\-Os\-Dma\-In\-Done@{\-Os\-Dma\-In\-Done}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-In\-Done}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Dma\-In\-Done (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-Common\-Buffer\-T $\ast$}]{p\-Dma\-Common\-Buffer}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_ae988cbc11e2de296867a4d11d683535b}
+\-Finalizes the last \-D\-M\-A in operation (cache handling...).
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma\-Common\-Buffer} & is a \-D\-M\-A common buffer object pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_dma_8h_adc9188c5d9ac01bead7d6ac8652b6087}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-Out\-Prepare@{\-Os\-Dma\-Out\-Prepare}}
+\index{\-Os\-Dma\-Out\-Prepare@{\-Os\-Dma\-Out\-Prepare}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-Out\-Prepare}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Dma\-Out\-Prepare (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-Common\-Buffer\-T $\ast$}]{p\-Dma\-Common\-Buffer}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_adc9188c5d9ac01bead7d6ac8652b6087}
+\-Prepares the system for a \-D\-M\-A out operation (cache handling...).
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma\-Common\-Buffer} & is a \-D\-M\-A common buffer object pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_dma_8h_ab96e2b94335438fbbffb8a02fb85deff}{
+\index{\-Oslib\-Dma.\-h@{\-Oslib\-Dma.\-h}!\-Os\-Dma\-Out\-Done@{\-Os\-Dma\-Out\-Done}}
+\index{\-Os\-Dma\-Out\-Done@{\-Os\-Dma\-Out\-Done}!OslibDma.h@{\-Oslib\-Dma.\-h}}
+\subsubsection[{\-Os\-Dma\-Out\-Done}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Dma\-Out\-Done (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Dma\-Common\-Buffer\-T $\ast$}]{p\-Dma\-Common\-Buffer}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_dma_8h_ab96e2b94335438fbbffb8a02fb85deff}
+\-Finalizes the last \-D\-M\-A out operation (cache handling...).
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p\-Dma\-Common\-Buffer} & is a \-D\-M\-A common buffer object pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}

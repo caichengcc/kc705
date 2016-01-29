@@ -1,0 +1,229 @@
+/*! \page p1 Disclaimer
+
+All rights reserved. This manual may not be reproduced or utilized without the prior written permission
+issued by Xylon. Trademarks contained herein belong to their respective holders.
+This publication has been carefully checked for accuracy. However Xylon does not assume any responsibility
+for the contents or use of any product described herein. Xylon reserves the right to make any changes to
+product without further notice. Our customers should ensure to take appropriate action so that their use
+of our products does not infringe upon any patents.
+*/
+
+/*! \page p2 Introduction
+
+\section  p2s2 Purpose
+The purpose of this document is to document driver interface for logiCVC IP core and to describe
+functionality of associated demo application.
+
+\section  p2s4 Targeted audience
+This document is targeted for product designers and software developers interested in incorporating the
+logiCVC IP core in their products.
+
+\section  p2s5 Pre-required knowledge
+Reader of this document should have basic knowledge of:
+\li basic driver interfaces on common operating systems
+
+Reader of this document should have advanced knowledge of:
+- ANSI C language
+*/
+
+
+/** \page init Driver initialization
+*
+* Driver initialization steps:\n
+* - initialize logiCVC instances with function logiCVC_Initialize()\n
+* - initialize and start logiCVC with function logiCVC_Start(); sets display
+* resolution\n
+* - (optional) setting the background and transparent color with functions
+* logiCVC_SetBackgroundColor() and logiCVC_SetTransparentColor()\n
+* - enable layers with function logiCVC_LayerEnDis() (Enable = 1)
+*
+* \n All of the forementioned, plus the display backlight and power handling,
+* is unified in one function: logiCVC_init(). Alternatively, logiCVC_initDd()
+* can be used. If any of these two functions is used, make sure to include
+* logiCVC_init.h.
+* \n An example of driver initialization is given in logiCVC_example.c.
+*****************************************************************************/
+
+
+
+/** \page notes Driver notes
+* \n Structure logiCVC_Config contains the logiCVC information gained from
+* hardware configuration while the structure logiCVC_Layer contains the logiCVC
+* layer information data.
+* \n When setting the transparent color of a layer the user has to make sure that
+* he or she supplies 8, 16 or 24bpp color to the function depending on layer
+* color depth. So, for 16bpp layer only lowest 2 bytes are used.
+* \n The background color is the transparent color in 24bpp RGB format. Background
+* color will be displayed on the last layer if this is enabled in HW configuration.
+* \n Buffering can be double of triple. Number of buffer is define by the constant
+* LOGICVC_NUM_BUFFERS. Switching between buffer is supported.
+* \n There are three elementary drawing functions available: logiCVC_DrawPixel(),
+* logiCVC_FillRectangle() and logiCVC_CopyRectangle().\n
+*
+* \b logiCVC \b LIMITATIONS:
+* \n The number of layers is limited to (LOGICVC_MAX_LAYERS_PER_CVC).
+* \n The logiCVC instance is the unique id of the logCVC device
+*  with values from 0 to (XPAR_LOGICVC_NUM_INSTANCES-1).
+* \n When setting the logiCVC layer output position (OutputPosition x_pos + width)
+* must be less then logiCVC horizontal resolution and (OutputPosition y_pos + height)
+* must be less then logiCVC Vertical resolution.
+*****************************************************************************/
+
+
+
+/*! \page p3 logiCVC demo details
+
+logiCVC demo is a short application utilizing and thus demonstrating functionality of most features
+available in logiCVC IP core. It also represents a piece of software that can be used as a guide on how
+should those features be used and what might be worth additional consideration.
+
+The following features are demostrated:
+        - Supports up to 5 layers, last configurable as background color
+        - Configurable layer size and position
+        - Color keyed transparency
+        - Pixel, Layer or Color lookup table alpha blending mode
+        - Packed pixel layer memory organization: pixel color depth 8bpp (using Color lookup table),
+              16bpp (Hicolor RGB 5-6-5) and 24bpp (Truecolor)
+        - HW cursor
+        - Double buffering that enables flicker-free reproduction
+<BR><BR>
+
+- <b>logiCVC_main.c file</b>
+
+This file contains the main() function for this application. The reason why this function is placed in its
+own file is the idea to se
+efate platform pre
+efation logic from the demo itself. This way logiCVC_demo
+files do not contain any platform-related code and could be reused in different enviroment.
+
+Function main() only initializes platform IIC bus and PLL circuit and calls logiCVCDemo().
+<BR><BR>
+
+- <b>logiCVCDemo() function</b>
+
+This function first initializes all available logiCVC instances in the system (number of instances is
+obtained from X
+ef_LOGICVC_NUM_INSTANCES macro defined in xparameters.h, which should reflect current setup choices made in
+the Xilinx design). In addition, if any layer is defined as 8-bit, it's Color lookup table (CLUT) is filled
+with such color values as if regular RGB_332 color configuration is used. This is done because on logiCVC
+init the CLUT is filled with zeros by default (all would be black).
+
+After that, for each available instance a number of demo functions is called, one by one. Most demo functions
+are called once per each logiCVC layer, except few functions that appear to be more attractive working on
+all layers at once.
+
+If a background layer is defined, then it is only used to display a specific color and none of the demo
+functions can be applied to it, so it is skipped. Also, trans
+efency and blending demos, if applied over the
+bottom layer, might create unexpected results because there is nothing to display "below the bottom
+layer", so they are also skipped for the last layer.
+<BR><BR>
+
+- <b>colorScaleOnLayer() function</b>
+
+This function draws a color scale from left to right side of display. Each layer gets a different color and
+displays it ranging from black to full color intensity. Layers use following colors:
+        - top layer: green
+        - 2nd layer: red
+        - 3rd layer: blue
+        - 4th layer: yellow
+        - 5th layer: purple\n
+
+In addition, each layer gets several horizontal lines in full color intensity. This is to be able to see
+layer moving in some of the following demos.
+At last, each layer get a number of short white vertical lines - number of lines equals to layer position,
+so first layer will have one line, 2nd layer will have 2 lines etc. They might seem as Roman numbers
+marking each layer, at least for first 3 layers.
+
+To avoid layer patterns being too much alike, each layer has different scale steps (i.e. different width of
+scale color bars) different positions and thinckness of horizontal lines and also different thickness of
+short vertical lines.
+<BR><BR>
+
+- <b>shrinkLayers() function</b>
+
+This function changes the position and size of each layer. It starts from top layer cropping it from full
+screen size to 1/5 of each screen dimension and placing it in centered next to the left edge of the screen.
+This is done in continuous steps from one position to another. Then the same is done with second layer,
+except it ends up a little bigger com
+efed to top layer, and placed centered next to the top screen edge. If
+other layers are defined, they would be handled the same, each ending a bit bigger and in top
+left corner and in top right corner of the screen, respectively.
+
+Last layer is not shrinked, as there would be nothing to display in the remaining
+eft of the screen. Of
+course, this is not a limitation in general, because other
+efts of screen may be covered by non-trans
+efent
+top layers, but that was not convenient for this demo.
+<BR><BR>
+
+- <b>setLayerTransparentColor() function</b>
+
+This function demonstrates setting different trans
+efent colors for layers. In continuous steps, pixels from
+top row are read and a trans
+efent color is chosen to match those pixels. This is done in continuous
+steps from left to right edge of each layer. As all layers now contain vertical color scale bars, setting
+trans
+efent color makes entire vertical bar invisible, allowing layer below to be visible through the hole.
+At the end of loop, trans
+efent color is set to match the pixel at position (40,0).
+<BR><BR>
+
+- <b>moveLayers() function</b>
+
+This function moves all layers concurrently in continuous steps from their current positions to the center
+of display. As the top layer is the smallest and each next layer is bigger, they will all be visible on top
+of each other at the end position. Continuous move also demonstrates how they smoothly interact when being
+moved over each other.
+<BR><BR>
+
+- <b>blendDownLayer() and \ref blendDownLayerStep() functions</b>
+
+This function blends down each layer in continuous steps from full opacity to full trans
+efency depending on
+current layer blending abilities.
+        - Layers with layer alpha ability are blend down setting layer alpha value
+        - Layers with CLUT are blend down setting alpha section of all colors in Color lookup table
+        - Layers with pixel alpha ability are only blend down for top left 50x50 pixel area, for sake of
+        performance
+<BR><BR>
+
+- <b>changeMemoryOffset() function</b>
+
+This function sets different memory offset for each layer. Offset is defined in pixels, so that new offset
+set defines the coordinates of the pixel that will appear at the top left corner of the layer. The function
+moves the offset in contiuous steps from (0,0) to (50,100), then to (100,100), then to (100,50) and finally
+back to (0,0). Content of each layer moves around and then returns back to the starting position.
+
+Note: Moving offset of the last layer may produce unpredicted content next to the bottom and right edge of
+the screen since it is displaying the area that might not be properly initialized for the show.
+<BR><BR>
+
+- <b>cursorDemo() function</b>
+
+This function uses the top layer to demonstrate how a simple mouse cursor could be displayed. Small arrow
+image with trans
+efent background is drawn in the top left corner of first layer, and the layer size is
+reduced to 16x16 area. This cursor is then moved around following a rectangular path around the center of
+screen simply by changing position of the top layer.
+<BR><BR>
+
+- <b>bufferingDemo() function</b>
+
+This function demonstrates how repainting the screen can be made flicker-free when using double buffering.
+In first pass, the function redraws entire screen and then draws small grey rectangle in a continuous loop
+moving this rectangle from top left corner to the bottom edge of the screen. In second pass, the same thing
+is done using double buffering. It should be visible that in second pass the image appearing on screen does
+not flicker.
+
+- <b>getRawColor() function</b>
+
+This is only a helper function for obtaining the raw color value that should be applied to a certain layer.
+Most color-related driver functions accept raw color values only, therefore application can manipulate with
+true colors, but once the color needs to be provided to the driver function, this function is called for
+conversion.
+
+*/
+

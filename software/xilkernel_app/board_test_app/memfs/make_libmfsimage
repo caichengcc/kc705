@@ -1,0 +1,29 @@
+#!/bin/sh
+#
+# Brian Hill, 2009
+# Scripte to automate MFS image generation.
+# Files in memfs_files directory are made into an mfs file system
+# which is then converted into a linkable C library.
+
+rm -f image.mfs
+
+echo "Creating mfs image:"
+cd memfs_files
+#mfsgen -cvbfs ../image.mfs 100 *
+mfsgen -cvbf ../image.mfs 550 *
+cd ..
+
+echo "Creating object file: image.mfs -> mfsimage.o"
+#mb-objcopy -I binary -O elf32-microblaze -B microblaze \
+# --rename-section .data=.rodata,alloc,load,readonly,data,contents \
+# image.mfs mfsimage.o 
+mb-objcopy -I binary -O elf32-microblazeel -B microblaze \
+  --rename-section .data=.foo,alloc,load,readonly,data,contents \
+  image.mfs mfsimage.o 
+
+echo "Creating library archive: mfsimage.o -> libmfsimage.a"
+mb-ar r libmfsimage.a mfsimage.o
+
+echo "Cleanup"
+rm image.mfs mfsimage.o
+

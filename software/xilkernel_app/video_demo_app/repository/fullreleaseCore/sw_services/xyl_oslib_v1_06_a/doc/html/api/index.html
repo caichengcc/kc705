@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+
+   <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"><title>Xylon OS Library: xyl_oslib</title></head><body><h1 class="PageHeader">Xylon OS Library: xyl_oslib for standalone (possix) Xilinx BSPs</h1>
+<h2>xyl_oslib standalone (possix) specifics:</h2>
+<ul>
+    <li>
+    Xylon OS library for standalone (BareMetal) or simple threading systems like Xilinx Xilkernel.
+    </li>
+    <li>
+    Specific to this variant of the xyl_oslib library is the SwConfig mechanism. Swconfig files must
+     be compiled to each application and they implement following functionality:
+     timers (getTime, sleep, ..),
+     malloc/free,
+     lock/unlock (in Posix systems this is related to Mutex ).
+     For template for the SWConfig files see: <a href="../../../src/possix/common/src/swconfig_template/"><span>SwConfig templates</span></a></li>
+  <li><span>there are several compile time options available when compilinf the xyl_oslib from the SDK:</span></li>
+  <ul>
+    <li><span>some options ara visible from the SDK "Board Support Package Settings" window: <br>
+</span></li>
+    <ul>
+      <li><span>OSLIB_CPU_SUPPORT - support for the direct CPU access to memory/registers - enabled by default</span></li>
+      <li><span>OSLIB_CPU_VLINK_SUPPORT - support for the Xylon VLINK bus access </span><span>- disabled by default</span></li>
+      <li><span>OSLIB_FILE_SUPPORT - support for particular file-system - disabled by default</span></li>
+    </ul>
+    <li><span>some options are set directly in the command line (in the CPU extra_compiler_flags):</span></li>
+    <ul>
+      <li><span>NDEBUG&nbsp;&nbsp; (-DNDEBUG) - disables all debug code and debug/error prints, used for release builds<br>
+</span></li>
+      <li><span>OSLIB_ADD_DEBUG (-DOSLIB_ADD_DEBUG) - adds </span><span>debug/error prints, can be used in combination with NDEBUG</span></li>
+    </ul>
+  </ul>
+
+</ul><big><span style="font-weight: bold;">Using xyl_oslib from Xilinx SDK:</span></big><br>
+<ul>
+  <li>xyl_oslib is integrated with the Xilinx SDK using Xilinx Libgen mechanisms (data folder: mdd, tcl, src folder: makefile)<br>
+  </li>
+  <li>To insert the xyl_oslib in the SDK BSP project:</li>
+  <ul>
+    <li>&nbsp;you must add the search path to SDK:
+Xilinxtools-&gt;Repositories-&gt;New (add path to folder that is two
+levels before xyl_oslib folder, e.g. if you have
+/user/hardware/sw_services/xyl_oslib_v_1_6_a then add path to/user/hardware ), click on the Refresh Repositories in SDK <br>
+    </li>
+    <li>SDK should now be able to locate the xyl_oslib in the BSP Settings window
+      <table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+        <tbody>
+          <tr>
+            <td style="vertical-align: top;"><img src="oslib.gif" alt=""></td>
+            <td style="vertical-align: top;"><img src="settings.gif" alt=""></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+    </li>
+  </ul>
+</ul>
+
+
+<hr class="whs1">
+
+
+<h2>xyl_oslib Common interface:</h2>
+<hr class="whs1">
+
+<div class="tabs">
+  <ul>
+    
+  <li id="current">xyl_oslib library software interface is defined in following document <a href="../../../src/common/doc/html/index.html"><span>Xylon oslib common interface</span></a></li>
+
+  </ul></div>
+<p>
+</p><p class="Copyright">
+Copyright © 2012 logicBRICKS. All rights reserved.
+</p>
+
+</body></html>

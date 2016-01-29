@@ -1,0 +1,201 @@
+\hypertarget{_oslib_memory_8h}{
+\section{\-Oslib\-Memory.h \-File \-Reference}
+\label{_oslib_memory_8h}\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}}
+}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_oslib_memory_8h_a7ba5693742013fc3e2a107f254ecafd1}{\-Os\-Malloc}(size)~\-Os\-Memory\-Allocate((size), \-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L)
+\item 
+\hypertarget{_oslib_memory_8h_aacc6dc231a54f98abb74ff0ac3d9310e}{
+\#define {\bfseries \-Os\-Malloc\-Aligned}(size, alignment)~\-Os\-Memory\-Allocate\-Aligned((size), \-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L, (alignment))}
+\label{_oslib_memory_8h_aacc6dc231a54f98abb74ff0ac3d9310e}
+
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0}{\-Os\-Memory\-Type\-E} \{ \hyperlink{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a94520171acdc9786c00c390d55199b5f}{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D}, 
+\hyperlink{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a5a91f0296d57d6de03585ff675cc3efb}{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-N\-O\-N\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}, 
+\hyperlink{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a62a8d67e94b0eba237d1a518f24dfa6e}{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}
+ \}
+\begin{DoxyCompactList}\small\item\em \-Input argument to \hyperlink{_oslib_memory_8h_ae1470cf045857101a4e88007776a01bd}{\-Os\-Memory\-Allocate}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void $\ast$ \hyperlink{_oslib_memory_8h_ae1470cf045857101a4e88007776a01bd}{\-Os\-Memory\-Allocate} (\-Os\-Size\-T size, \hyperlink{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0}{\-Os\-Memory\-Type\-E} type)
+\item 
+void \hyperlink{_oslib_memory_8h_a68875283cec586a2a6ac3294c9b07403}{\-Os\-Memory\-Free} (void $\ast$p)
+\item 
+void $\ast$ \hyperlink{_oslib_memory_8h_a61e58611ad9b19b04d80860077eb9b99}{\-Os\-Memory\-Allocate\-Aligned} (\-Os\-Size\-T size, \hyperlink{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0}{\-Os\-Memory\-Type\-E} type, \-Os\-Size\-T alignment)
+\item 
+void \hyperlink{_oslib_memory_8h_afd7a56c27ee75ab949038f9c27a9b163}{\-Os\-Memory\-Free\-Aligned} (void $\ast$ptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-This confidential and proprietary code may be used only as authorized by licensing agreement from \-Xylon d.\-o.\-o. \-In the event of publication, the following notice is applicable\-:
+
+\-Copyright 2009 -\/ \-Xylon d.\-o.\-o. \-All rights reserved.
+
+\-The entire notice above must be reproduced on all authorized copies.
+
+\-Contains relevant \-O\-S specific memory wrappers, as well as the memory handling functionality common to all the \-O\-Ss.
+
+
+\begin{DoxyPre}
+ MODIFICATION HISTORY:\end{DoxyPre}
+
+
+
+\begin{DoxyPre} Ver    Who  Date     Changes \par
+
+ -----  ---- -------- ------------------------------------------------------- \par
+
+ 1.00.a HJ  30/10/09  First release \par
+
+ \end{DoxyPre}
+ 
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_oslib_memory_8h_a7ba5693742013fc3e2a107f254ecafd1}{
+\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-Os\-Malloc@{\-Os\-Malloc}}
+\index{\-Os\-Malloc@{\-Os\-Malloc}!OslibMemory.h@{\-Oslib\-Memory.\-h}}
+\subsubsection[{\-Os\-Malloc}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-Os\-Malloc(
+\begin{DoxyParamCaption}
+\item[{}]{size}
+\end{DoxyParamCaption}
+)~\-Os\-Memory\-Allocate((size), \-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L)}}
+\label{_oslib_memory_8h_a7ba5693742013fc3e2a107f254ecafd1}
+\-Defined to simplify memory allocation from general application code.
+
+!!! \-Do not use these macros from \-I\-S\-R or \-D\-P\-C code !!! 
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\hypertarget{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0}{
+\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-Os\-Memory\-Type\-E@{\-Os\-Memory\-Type\-E}}
+\index{\-Os\-Memory\-Type\-E@{\-Os\-Memory\-Type\-E}!OslibMemory.h@{\-Oslib\-Memory.\-h}}
+\subsubsection[{\-Os\-Memory\-Type\-E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-Os\-Memory\-Type\-E}}}
+\label{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0}
+
+
+\-Input argument to \hyperlink{_oslib_memory_8h_ae1470cf045857101a4e88007776a01bd}{\-Os\-Memory\-Allocate}. 
+
+\-Os\-Memory\-Type\-E lists different memory types. \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D@{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D}!\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}}\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D@{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D}}\item[{\em 
+\hypertarget{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a94520171acdc9786c00c390d55199b5f}{
+\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-U\-N\-D\-E\-F\-I\-N\-E\-D}
+\label{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a94520171acdc9786c00c390d55199b5f}
+}]\-Unspecified memory type. \index{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-N\-O\-N\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L@{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-N\-O\-N\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}!\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}}\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-N\-O\-N\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L@{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-N\-O\-N\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}}\item[{\em 
+\hypertarget{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a5a91f0296d57d6de03585ff675cc3efb}{
+\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-N\-O\-N\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}
+\label{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a5a91f0296d57d6de03585ff675cc3efb}
+}]\-Non-\/paged memory type. \-This memory type is used to store data that might be accessed when the system cannot handle page faults, e.\-g. when \-I\-S\-Rs or \-D\-P\-Cs are executed. \-On \-Windows, this is the case whenever the code runs at \-I\-R\-Q\-L $>$= \-D\-I\-S\-P\-A\-T\-C\-H\-\_\-\-L\-E\-V\-E\-L. \-This memory type is a scarce resource and drivers should allocate it only when necessary. \index{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L@{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}!\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}}\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L@{\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}}\item[{\em 
+\hypertarget{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a62a8d67e94b0eba237d1a518f24dfa6e}{
+\-O\-S\-\_\-\-M\-E\-M\-O\-R\-Y\-\_\-\-T\-Y\-P\-E\-\_\-\-\_\-\-P\-A\-G\-E\-D\-\_\-\-P\-O\-O\-L}
+\label{_oslib_memory_8h_a8c5a9a00604c3911aa598fb115c4e0e0a62a8d67e94b0eba237d1a518f24dfa6e}
+}]\-Paged memory type. \-This memory type is used to store data that can be written to the paging file. \-Do not access any data allocated using this memory type from \-I\-S\-Rs or \-D\-P\-Cs. \-On \-Windows, use it only when the code runs at \-I\-R\-Q\-L $<$ \-D\-I\-S\-P\-A\-T\-C\-H\-\_\-\-L\-E\-V\-E\-L. \end{description}
+\end{Desc}
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_oslib_memory_8h_ae1470cf045857101a4e88007776a01bd}{
+\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-Os\-Memory\-Allocate@{\-Os\-Memory\-Allocate}}
+\index{\-Os\-Memory\-Allocate@{\-Os\-Memory\-Allocate}!OslibMemory.h@{\-Oslib\-Memory.\-h}}
+\subsubsection[{\-Os\-Memory\-Allocate}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \-Os\-Memory\-Allocate (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Size\-T}]{size, }
+\item[{{\bf \-Os\-Memory\-Type\-E}}]{type}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_memory_8h_ae1470cf045857101a4e88007776a01bd}
+\-Allocates a memory.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em size} & is the number of bytes to allocate. \\
+\hline
+{\em type} & is a memory pool type.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A memory pointer on success or \-N\-U\-L\-L on failure.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_memory_8h_a68875283cec586a2a6ac3294c9b07403}{
+\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-Os\-Memory\-Free@{\-Os\-Memory\-Free}}
+\index{\-Os\-Memory\-Free@{\-Os\-Memory\-Free}!OslibMemory.h@{\-Oslib\-Memory.\-h}}
+\subsubsection[{\-Os\-Memory\-Free}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Memory\-Free (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_memory_8h_a68875283cec586a2a6ac3294c9b07403}
+\-Frees a memory.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em p} & is a memory pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_memory_8h_a61e58611ad9b19b04d80860077eb9b99}{
+\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-Os\-Memory\-Allocate\-Aligned@{\-Os\-Memory\-Allocate\-Aligned}}
+\index{\-Os\-Memory\-Allocate\-Aligned@{\-Os\-Memory\-Allocate\-Aligned}!OslibMemory.h@{\-Oslib\-Memory.\-h}}
+\subsubsection[{\-Os\-Memory\-Allocate\-Aligned}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ \-Os\-Memory\-Allocate\-Aligned (
+\begin{DoxyParamCaption}
+\item[{\-Os\-Size\-T}]{size, }
+\item[{{\bf \-Os\-Memory\-Type\-E}}]{type, }
+\item[{\-Os\-Size\-T}]{alignment}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_memory_8h_a61e58611ad9b19b04d80860077eb9b99}
+\-Allocates memory aligned to power of 2 byte boundary.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em size} & is the number of bytes to allocate. \\
+\hline
+{\em type} & is a memory pool type. \\
+\hline
+{\em alignment} & is the power of 2 byte boundary.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A memory pointer on success or \-N\-U\-L\-L on failure.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}
+\hypertarget{_oslib_memory_8h_afd7a56c27ee75ab949038f9c27a9b163}{
+\index{\-Oslib\-Memory.\-h@{\-Oslib\-Memory.\-h}!\-Os\-Memory\-Free\-Aligned@{\-Os\-Memory\-Free\-Aligned}}
+\index{\-Os\-Memory\-Free\-Aligned@{\-Os\-Memory\-Free\-Aligned}!OslibMemory.h@{\-Oslib\-Memory.\-h}}
+\subsubsection[{\-Os\-Memory\-Free\-Aligned}]{\setlength{\rightskip}{0pt plus 5cm}void \-Os\-Memory\-Free\-Aligned (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{ptr}
+\end{DoxyParamCaption}
+)}}
+\label{_oslib_memory_8h_afd7a56c27ee75ab949038f9c27a9b163}
+\-Frees alligned memory.
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em ptr} & is a memory pointer.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-None.
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-None. 
+\end{DoxyNote}

@@ -1,0 +1,359 @@
+{
+   Display-PortTypeClock: "false",
+   Display-PortTypeReset: "false",
+   DisplayTieOff: "1",
+   HideNet: "/mig_clk_200|/microblaze_subsystem/Soft_Ethernet_MAC/tri_mode_ethernet_mac_rx_mac_aclk|/microblaze_subsystem/Soft_Ethernet_MAC/tri_mode_ethernet_mac_tx_mac_aclk|/clk_150Mhz|/ethernet_clk_125|/clk_100Mhz|/proc_sys_reset_1_peripheral_aresetn|/microblaze_subsystem/Soft_Ethernet_MAC/tri_mode_ethernet_mac_tx_reset|/microblaze_subsystem/Soft_Ethernet_MAC/tri_mode_ethernet_mac_rx_reset|/proc_sys_reset_1_bus_struct_reset|/ext_reset_in_1|/proc_sys_reset_1_interconnect_aresetn|/proc_sys_reset_1_mb_reset|/microblaze_subsystem/Soft_Ethernet_MAC/axi_ethernet_buffer_phy_rst_n|",
+   comment_0: "Kintex-7 Embedded Video -2013.2",
+   comment_1: "Video Pipeline - 1",
+   comment_10: "AXI MM",
+   comment_11: "AXI Lite",
+   comment_2: "Video Pipeline - 2",
+   comment_3: "Video Pipeline - 3",
+   comment_4: "Video Pipeline - 4",
+   comment_5: "Display Controller",
+   comment_6: "MicroBlaze Sub System",
+   comment_7: "DDR Controller Interface",
+   comment_8: "AXI MM ",
+   comment_9: "AXI MM",
+   commentid: "comment_0|comment_1|comment_2|comment_3|comment_4|comment_5|comment_6|comment_7|comment_8|comment_9|comment_10|comment_11|",
+   font_comment_0: "195",
+   font_comment_1: "113",
+   font_comment_10: "113",
+   font_comment_11: "113",
+   font_comment_2: "113",
+   font_comment_3: "113",
+   font_comment_4: "113",
+   font_comment_5: "113",
+   font_comment_6: "113",
+   font_comment_7: "113",
+   font_comment_8: "113",
+   font_comment_9: "113",
+   guistr: "# # String gsaved with Nlview version 6.2.12  2013-02-15 bk=1.2829 VDI=32 GEI=33
+#  -string -flagsOSRD
+preplace port RESET -pg 1 -y 830 -defaultsOSRD
+preplace port sd_cmd_o -pg 1 -y 4200 -defaultsOSRD
+preplace port Linear_Flash_adv_ldn -pg 1 -y 4120 -defaultsOSRD
+preplace port sd_cmd_t -pg 1 -y 4220 -defaultsOSRD
+preplace port dvi_24_to_16bit_hsync -pg 1 -y 1860 -defaultsOSRD
+preplace port Linear_Flash_we_n -pg 1 -y 4040 -defaultsOSRD
+preplace port axi_xadc_0_VAUXN -pg 1 -y 3920 -defaultsOSRD
+preplace port CLK_N -pg 1 -y 460 -defaultsOSRD
+preplace port axi_xadc_0_VAUXP -pg 1 -y 3900 -defaultsOSRD
+preplace port CLK_P -pg 1 -y 440 -defaultsOSRD
+preplace port Soft_Ethernet_MAC_RST_n_pin -pg 1 -y 830 -defaultsOSRD
+preplace port IIC_MAIN -pg 1 -y 3800 -defaultsOSRD
+preplace port Soft_Ethernet_MAC_MDIO_pin -pg 1 -y 3920 -defaultsOSRD
+preplace port dvi_24_to_16bit_vsync -pg 1 -y 1900 -defaultsOSRD
+preplace port init_calib_complete -pg 1 -y 140 -defaultsOSRD
+preplace port ROTARY_GPIO_IO -pg 1 -y 3780 -defaultsOSRD
+preplace port Soft_Ethernet_MAC_MDC_pin -pg 1 -y 3890 -defaultsOSRD
+preplace port RS232_UART_1_sout -pg 1 -y 4000 -defaultsOSRD
+preplace port LCD_GPIO_IO -pg 1 -y 3730 -defaultsOSRD
+preplace port sd_wp -pg 1 -y 4080 -defaultsOSRD
+preplace port Soft_Ethernet_MAC -pg 1 -y 3830 -defaultsOSRD
+preplace port RS232_UART_1_sin -pg 1 -y 3980 -defaultsOSRD
+preplace port sd_clk -pg 1 -y 4140 -defaultsOSRD
+preplace port dvi_24_to_16bit_hdmi_clk -pg 1 -y 1940 -defaultsOSRD
+preplace port sd_cd_n -pg 1 -y 4060 -defaultsOSRD
+preplace port axi_xadc_8_VAUXN -pg 1 -y 3940 -defaultsOSRD
+preplace port DDR3 -pg 1 -y 20 -defaultsOSRD
+preplace port axi_xadc_8_VAUXP -pg 1 -y 3960 -defaultsOSRD
+preplace port sd_cmd_i -pg 1 -y 4040 -defaultsOSRD
+preplace port dvi_24_to_16bit_de -pg 1 -y 1880 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_red -pg 1 -y 3470 -defaultsOSRD
+preplace portBus dvi_24_to_16bit_hdmi_data -pg 1 -y 1920 -defaultsOSRD
+preplace portBus ddr3_1_n -pg 1 -y 80 -defaultsOSRD
+preplace portBus Linear_Flash_Data_O -pg 1 -y 4080 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_de -pg 1 -y 2170 -defaultsOSRD
+preplace portBus Push_Buttons_5Bits_TRI_I -pg 1 -y 3860 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_vsync -pg 1 -y 2150 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_blue -pg 1 -y 2130 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_vsync -pg 1 -y 3370 -defaultsOSRD
+preplace portBus ddr3_1_p -pg 1 -y 100 -defaultsOSRD
+preplace portBus sd_dat_o -pg 1 -y 4160 -defaultsOSRD
+preplace portBus IIC_MUX_RESET_B -pg 1 -y 3960 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_clk -pg 1 -y 2190 -defaultsOSRD
+preplace portBus Linear_Flash_oe_n -pg 1 -y 4060 -defaultsOSRD
+preplace portBus DIP_Switches_TRI_I -pg 1 -y 3880 -defaultsOSRD
+preplace portBus Linear_Flash_ce_n -pg 1 -y 4020 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_red -pg 1 -y 2250 -defaultsOSRD
+preplace portBus Linear_Flash_Data_T -pg 1 -y 4100 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_green -pg 1 -y 2210 -defaultsOSRD
+preplace portBus sm_fan_pwm -pg 1 -y 4240 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_green -pg 1 -y 3430 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_de -pg 1 -y 3390 -defaultsOSRD
+preplace portBus sd_dat_t -pg 1 -y 4180 -defaultsOSRD
+preplace portBus Linear_Flash_Data_I -pg 1 -y 4000 -defaultsOSRD
+preplace portBus Linear_Flash_address -pg 1 -y 4260 -defaultsOSRD
+preplace portBus LEDs_8Bits_TRI_O -pg 1 -y 3940 -defaultsOSRD
+preplace portBus sd_dat_i -pg 1 -y 4020 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_clk -pg 1 -y 3410 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_blue -pg 1 -y 3350 -defaultsOSRD
+preplace portBus DVI_IN_0_fmc_hpc_dvidp_dvii_hsync -pg 1 -y 2230 -defaultsOSRD
+preplace portBus DVI_IN_1_fmc_lpc_dvidp_dvii_hsync -pg 1 -y 3450 -defaultsOSRD
+preplace inst inline_scaler_1 -pg 1 -lvl 3 -y 1970 -defaultsOSRD -orient R90
+preplace inst v_in_pipe_1 -pg 1 -lvl 1 -y 1950 -defaultsOSRD -orient R90
+preplace inst timebase_0 -pg 1 -lvl 5 -y 3690 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 11 -y 3490 -defaultsOSRD
+preplace inst inline_scaler_2 -pg 1 -lvl 8 -y 2140 -defaultsOSRD -orient R90
+preplace inst v_in_pipe_2 -pg 1 -lvl 6 -y 2170 -defaultsOSRD -orient R90
+preplace inst axi4lite_1 -pg 1 -lvl 8 -y 2900 -defaultsOSRD -orient R90
+preplace inst DDR_Interface -pg 1 -lvl 4 -y 290 -defaultsOSRD -orient R90
+preplace inst axi4_0 -pg 1 -lvl 4 -y 770 -defaultsOSRD -orient R90
+preplace inst axi_mm_video23 -pg 1 -lvl 9 -y 1170 -defaultsOSRD -orient R90
+preplace inst Display_Controller -pg 1 -lvl 13 -y 1920 -defaultsOSRD
+preplace inst mem_scaler_1 -pg 1 -lvl 2 -y 1990 -defaultsOSRD -orient R90
+preplace inst microblaze_subsystem -pg 1 -lvl 10 -y 4000 -defaultsOSRD
+preplace inst mem_scaler_2 -pg 1 -lvl 7 -y 2180 -defaultsOSRD -orient R90
+preplace inst clock_generator_1 -pg 1 -lvl 12 -y 3150 -defaultsOSRD
+preplace inst axi_mm_video01 -pg 1 -lvl 2 -y 1310 -defaultsOSRD -orient R90
+preplace inst axi_mm_video01 -pg 1 -lvl 2 -y 1310 -defaultsOSRD -orient R90
+preplace netloc axi4lite_1_m10_axi 1 7 1 N
+preplace netloc axi4lite_1_m10_axi 1 7 1 N
+preplace netloc v_in_pipe_2_s2mm_introut 1 6 4 4690 4240 N 4240 N 4240 N
+preplace netloc v_in_pipe_2_s2mm_introut 1 6 4 4690 4240 N 4240 N 4240 N
+preplace netloc v_in_pipe_2_s2mm_introut 1 6 4 4690 4240 N 4240 N 4240 N
+preplace netloc sd_wp_1 1 0 10 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 6540
+preplace netloc sd_wp_1 1 0 10 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 N 4080 6540
+preplace netloc logisdhc_0_sd_clk 1 10 4 N 4140 N 4140 N 4140 N
+preplace netloc logisdhc_0_sd_clk 1 10 4 N 4140 N 4140 N 4140 N
+preplace netloc dvi_in_1_vdma_s2mm_fsync_out 1 6 7 4720 2330 5010 2400 N 2400 N 2400 N 2400 N 2400 8160
+preplace netloc dvi_in_1_vdma_s2mm_fsync_out 1 6 7 4720 2330 5010 2400 N 2400 N 2400 N 2400 N 2400 8160
+preplace netloc v_tc_1_hsync_out 1 1 7 880 2210 1560 2190 2010 2840 N 2840 4140 2400 4710 1930 5160
+preplace netloc v_tc_1_hsync_out 1 1 7 880 2210 1560 2190 2010 2840 N 2840 4140 2400 4710 1930 5160
+preplace netloc axi4lite_1_m06_axi 1 3 5 2020 2860 N 2860 4020 1950 N 1950 5050
+preplace netloc axi4lite_1_m06_axi 1 3 5 2020 2860 N 2860 4020 1950 N 1950 5050
+preplace netloc clock_generator_1_locked 1 9 4 6660 3630 7320 3220 N 3220 8140
+preplace netloc clock_generator_1_locked 1 9 4 6660 3630 7320 3220 N 3220 8140
+preplace netloc vauxp8_1 1 0 10 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N
+preplace netloc vauxp8_1 1 0 10 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N 3960 N
+preplace netloc logisdhc_0_sd_cmd_t 1 10 4 N 4220 N 4220 N 4220 N
+preplace netloc logisdhc_0_sd_cmd_t 1 10 4 N 4220 N 4220 N 4220 N
+preplace netloc axi_emc_1_mem_oen 1 10 4 N 4060 N 4060 N 4060 N
+preplace netloc axi_emc_1_mem_oen 1 10 4 N 4060 N 4060 N 4060 N
+preplace netloc axi4lite_1_m11_axi 1 3 5 2000 3500 N 3500 4150 2710 4770 1990 5040
+preplace netloc axi4lite_1_m11_axi 1 3 5 2000 3500 N 3500 4150 2710 4770 1990 5040
+preplace netloc v_tc_1_vsync_out 1 1 7 850 2220 1550 2180 2040 2830 N 2830 4110 2390 4680 1920 5170
+preplace netloc v_tc_1_vsync_out 1 1 7 850 2220 1550 2180 2040 2830 N 2830 4110 2390 4680 1920 5170
+preplace netloc axi4lite_1_m01 1 1 7 900 1780 N 1780 2050 1900 N 1900 N 1900 N 1900 5060
+preplace netloc axi4lite_1_m01 1 1 7 900 1780 N 1780 2050 1900 N 1900 N 1900 N 1900 5060
+preplace netloc soft_ethernet_mac_gmii 1 10 4 7350 3830 N 3830 N 3830 N
+preplace netloc soft_ethernet_mac_gmii 1 10 4 7350 3830 N 3830 N 3830 N
+preplace netloc axi4lite_1_m02 1 2 6 1550 1760 N 1760 N 1760 N 1760 N 1760 5110
+preplace netloc axi4lite_1_m02 1 2 6 1550 1760 N 1760 N 1760 N 1760 N 1760 5110
+preplace netloc dvi_in_1_fmc_lpc_dvidp_dvii_red_1 1 0 6 N 3470 N 3470 N 3470 N 3470 N 3470 4090
+preplace netloc dvi_in_1_fmc_lpc_dvidp_dvii_red_1 1 0 6 N 3470 N 3470 N 3470 N 3470 N 3470 4090
+preplace netloc eeprom_port 1 10 4 7320 3800 N 3800 N 3800 N
+preplace netloc eeprom_port 1 10 4 7320 3800 N 3800 N 3800 N
+preplace netloc axi4lite_1_m07_axi 1 6 2 4730 2000 5030
+preplace netloc axi4lite_1_m07_axi 1 6 2 4730 2000 5030
+preplace netloc axi4lite_1_m12_axi 1 7 1 N
+preplace netloc axi4lite_1_m12_axi 1 7 1 N
+preplace netloc tpg_0_vdma_m_axi_s2mm 1 2 1 1560
+preplace netloc tpg_0_vdma_m_axi_s2mm 1 2 1 1560
+preplace netloc axi4lite_1_m04 1 4 4 3360 3510 4160 2780 N 2780 N
+preplace netloc axi4lite_1_m04 1 4 4 3360 3510 4160 2780 N 2780 N
+preplace netloc logicvc_2_d_pix_o 1 13 1 N
+preplace netloc logicvc_2_d_pix_o 1 13 1 N
+preplace netloc logicvc_2_d_pix_o 1 13 1 N
+preplace netloc logicvc_2_d_pix_o 1 13 1 N
+preplace netloc rotary_gpio_port 1 10 4 7330 3780 N 3780 N 3780 N
+preplace netloc rotary_gpio_port 1 10 4 7330 3780 N 3780 N 3780 N
+preplace netloc axi4lite_1_m05 1 1 7 890 1770 N 1770 2060 1890 N 1890 N 1890 N 1890 5100
+preplace netloc axi4lite_1_m05 1 1 7 890 1770 N 1770 2060 1890 N 1890 N 1890 N 1890 5100
+preplace netloc dvi_in_1_fmc_lpc_dvidp_dvii_green_1 1 0 6 N 3430 N 3430 N 3430 N 3430 N 3430 4070
+preplace netloc dvi_in_1_fmc_lpc_dvidp_dvii_green_1 1 0 6 N 3430 N 3430 N 3430 N 3430 N 3430 4070
+preplace netloc axi_emc_1_mem_adv_ldn 1 10 4 N 4120 N 4120 N 4120 N
+preplace netloc axi_emc_1_mem_adv_ldn 1 10 4 N 4120 N 4120 N 4120 N
+preplace netloc axi_emc_1_mem_adv_ldn 1 10 4 N 4120 N 4120 N 4120 N
+preplace netloc microblaze_subsystem_dout 1 10 4 N 4260 N 4260 N 4260 N
+preplace netloc microblaze_subsystem_dout 1 10 4 N 4260 N 4260 N 4260 N
+preplace netloc video_mux_sel_1 1 1 13 880 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 8130 2070 8580
+preplace netloc video_mux_sel_1 1 1 13 880 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 N 1750 8130 2070 8580
+preplace netloc logisdhc_0_sd_dat_o 1 10 4 N 4160 N 4160 N 4160 N
+preplace netloc logisdhc_0_sd_dat_o 1 10 4 N 4160 N 4160 N 4160 N
+preplace netloc axi4lite_1_m08_axi 1 6 2 4740 2010 5020
+preplace netloc axi4lite_1_m08_axi 1 6 2 4740 2010 5020
+preplace netloc mem_scaler_1_mm2s_introut 1 2 8 1530 3520 N 3520 3330 3850 4130 3840 N 3840 N 3840 N 3840 6600
+preplace netloc mem_scaler_1_mm2s_introut 1 2 8 1530 3520 N 3520 3330 3850 4130 3840 N 3840 N 3840 N 3840 6600
+preplace netloc video_mux_sel_2 1 6 8 4670 1960 5130 2370 N 2370 N 2370 N 2370 N 2370 N 2370 8590
+preplace netloc video_mux_sel_2 1 6 8 4670 1960 5130 2370 N 2370 N 2370 N 2370 N 2370 N 2370 8590
+preplace netloc axi4lite_1_m13_axi 1 4 4 3360 460 N 460 N 460 5150
+preplace netloc axi4lite_1_m13_axi 1 4 4 3360 460 N 460 N 460 5150
+preplace netloc logicvc_1_interrupt 1 9 5 6650 3620 7330 3400 N 3400 N 3400 8610
+preplace netloc logicvc_1_interrupt 1 9 5 6650 3620 7330 3400 N 3400 N 3400 8610
+preplace netloc axi_emc_1_mem_dq_o 1 10 4 N 4080 N 4080 N 4080 N
+preplace netloc axi_emc_1_mem_dq_o 1 10 4 N 4080 N 4080 N 4080 N
+preplace netloc axi_emc_1_mem_dq_o 1 10 4 N 4080 N 4080 N 4080 N
+preplace netloc axi4_0_s00 1 4 7 N 900 N 900 N 900 N 900 N 900 N 900 7310
+preplace netloc axi4_0_s00 1 4 7 N 900 N 900 N 900 N 900 N 900 N 900 7310
+preplace netloc logicvc_2_hsync_o 1 13 1 N
+preplace netloc logicvc_2_hsync_o 1 13 1 N
+preplace netloc dvi_in_0_vdma_s2mm_fsync_out 1 1 12 910 2140 1520 3480 N 3480 N 3480 4100 2410 4750 1970 5120 2380 N 2380 N 2380 N 2380 N 2380 8120
+preplace netloc dvi_in_0_vdma_s2mm_fsync_out 1 1 12 910 2140 1520 3480 N 3480 N 3480 4100 2410 4750 1970 5120 2380 N 2380 N 2380 N 2380 N 2380 8120
+preplace netloc mdm_1_debug_sys_rst 1 10 1 7340
+preplace netloc mdm_1_debug_sys_rst 1 10 1 7340
+preplace netloc axi4_0_s01 1 2 2 1560 870 N
+preplace netloc axi4_0_s01 1 2 2 1560 870 N
+preplace netloc mem_scaler_2_mm2s_introut 1 7 3 4980 3020 N 3020 6580
+preplace netloc mem_scaler_2_mm2s_introut 1 7 3 4980 3020 N 3020 6580
+preplace netloc mem_scaler_2_mm2s_introut 1 7 3 4980 3020 N 3020 6580
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_hsync_1 1 0 1 390
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_hsync_1 1 0 1 390
+preplace netloc axi4lite_1_m09_axi 1 7 1 5000
+preplace netloc axi4lite_1_m09_axi 1 7 1 5000
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_hsync_2 1 0 6 N 3450 N 3450 N 3450 N 3450 N 3450 4080
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_hsync_2 1 0 6 N 3450 N 3450 N 3450 N 3450 N 3450 4080
+preplace netloc logisdhc_0_sd_dat_t 1 10 4 N 4180 N 4180 N 4180 N
+preplace netloc logisdhc_0_sd_dat_t 1 10 4 N 4180 N 4180 N 4180 N
+preplace netloc axi4_0_s03 1 4 5 N 880 N 880 N 880 N 880 6010
+preplace netloc axi4_0_s03 1 4 5 N 880 N 880 N 880 N 880 6010
+preplace netloc sd_dat_i_1 1 0 10 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 6630
+preplace netloc sd_dat_i_1 1 0 10 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 N 4020 6630
+preplace netloc mem_dq_i_1 1 0 10 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N
+preplace netloc mem_dq_i_1 1 0 10 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N 4000 N
+preplace netloc logicvc_2_blank_o 1 13 1 N
+preplace netloc logicvc_2_blank_o 1 13 1 N
+preplace netloc axi_emc_1_mem_dq_t 1 10 4 N 4100 N 4100 N 4100 N
+preplace netloc axi_emc_1_mem_dq_t 1 10 4 N 4100 N 4100 N 4100 N
+preplace netloc push_buttons_5bits_tri_i_1 1 0 10 N 3860 N 3860 N 3860 N 3860 3310 3870 4160 3860 N 3860 N 3860 N 3860 N
+preplace netloc push_buttons_5bits_tri_i_1 1 0 10 N 3860 N 3860 N 3860 N 3860 3310 3870 4160 3860 N 3860 N 3860 N 3860 N
+preplace netloc ddr3_port 1 4 10 3340 20 N 20 N 20 N 20 N 20 N 20 N 20 N 20 N 20 N
+preplace netloc ddr3_port 1 4 10 3340 20 N 20 N 20 N 20 N 20 N 20 N 20 N 20 N 20 N
+preplace netloc vauxp0_1 1 0 10 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N
+preplace netloc vauxp0_1 1 0 10 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N 3900 N
+preplace netloc inline_scaler_1_s2mm_fsync_out 1 3 10 2040 1910 N 1910 N 1910 N 1910 N 1910 N 1910 N 1910 N 1910 N 1910 8120
+preplace netloc inline_scaler_1_s2mm_fsync_out 1 3 10 2040 1910 N 1910 N 1910 N 1910 N 1910 N 1910 N 1910 N 1910 N 1910 8120
+preplace netloc axi4lite_0_m15 1 8 3 N 3010 N 3010 7290
+preplace netloc axi4lite_0_m15 1 8 3 N 3010 N 3010 7290
+preplace netloc inline_scaler_2_reset_n 1 8 6 N 2310 N 2310 N 2310 N 2310 N 2310 8570
+preplace netloc inline_scaler_2_reset_n 1 8 6 N 2310 N 2310 N 2310 N 2310 N 2310 8570
+preplace netloc axi4lite_1_m00_axi 1 8 5 6000 2680 N 2680 N 2680 N 2680 8150
+preplace netloc axi4lite_1_m00_axi 1 8 5 6000 2680 N 2680 N 2680 N 2680 8150
+preplace netloc vauxn8_1 1 0 10 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N
+preplace netloc vauxn8_1 1 0 10 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N 3940 N
+preplace netloc axi4_0_m00 1 3 1 N
+preplace netloc axi4_0_m00 1 3 1 N
+preplace netloc inline_scaler_1_s2mm_introut 1 3 7 2030 3510 3340 3840 4100 3830 N 3830 N 3830 N 3830 6610
+preplace netloc inline_scaler_1_s2mm_introut 1 3 7 2030 3510 3340 3840 4100 3830 N 3830 N 3830 N 3830 6610
+preplace netloc xadc_wiz_1_temp_out 1 4 7 3350 3830 4050 3730 N 3730 N 3730 N 3730 6630 3640 7300
+preplace netloc xadc_wiz_1_temp_out 1 4 7 3350 3830 4050 3730 N 3730 N 3730 N 3730 6630 3640 7300
+preplace netloc xadc_wiz_1_temp_out 1 4 7 3350 3830 4050 3730 N 3730 N 3730 N 3730 6630 3640 7300
+preplace netloc axi_emc_1_mem_cen 1 10 4 N 4020 N 4020 N 4020 N
+preplace netloc axi_emc_1_mem_cen 1 10 4 N 4020 N 4020 N 4020 N
+preplace netloc dip_switches_4bits_tri_i_1 1 0 10 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N
+preplace netloc dip_switches_4bits_tri_i_1 1 0 10 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N 3880 N
+preplace netloc v_tc_1_active_video_out 1 1 7 860 2200 N 2200 1990 2850 N 2850 4130 2380 4700 1940 5140
+preplace netloc v_tc_1_active_video_out 1 1 7 860 2200 N 2200 1990 2850 N 2850 4130 2380 4700 1940 5140
+preplace netloc v_in_pipe_1_s2mm_introut 1 1 9 870 4180 N 4180 N 4180 N 4180 N 4180 N 4180 N 4180 N 4180 N
+preplace netloc v_in_pipe_1_s2mm_introut 1 1 9 870 4180 N 4180 N 4180 N 4180 N 4180 N 4180 N 4180 N 4180 N
+preplace netloc xlconstant_4_const 1 4 10 3360 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N
+preplace netloc xlconstant_4_const 1 4 10 3360 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N 100 N
+preplace netloc soft_ethernet_mac_mdc 1 10 4 7340 3890 N 3890 N 3890 N
+preplace netloc soft_ethernet_mac_mdc 1 10 4 7340 3890 N 3890 N 3890 N
+preplace netloc Net 1 10 4 N 3920 N 3920 N 3920 N
+preplace netloc Net 1 10 4 N 3920 N 3920 N 3920 N
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_blue_1 1 0 1 340
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_blue_1 1 0 1 340
+preplace netloc mem_scaler_1_s2mm_introut 1 2 8 1540 3530 N 3530 3320 3860 4150 3850 N 3850 N 3850 N 3850 6590
+preplace netloc mem_scaler_1_s2mm_introut 1 2 8 1540 3530 N 3530 3320 3860 4150 3850 N 3850 N 3850 N 3850 6590
+preplace netloc logicvc_2_vsync_o 1 13 1 N
+preplace netloc logicvc_2_vsync_o 1 13 1 N
+preplace netloc axi_emc_1_mem_wen 1 10 4 N 4040 N 4040 N 4040 N
+preplace netloc axi_emc_1_mem_wen 1 10 4 N 4040 N 4040 N 4040 N
+preplace netloc axi_mm_video01_s00 1 1 1 870
+preplace netloc axi_mm_video01_s00 1 1 1 870
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_red_1 1 0 1 400
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_red_1 1 0 1 400
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_vsync_1 1 0 1 350
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_vsync_1 1 0 1 350
+preplace netloc axi_mm_video01_s01 1 1 1 N
+preplace netloc axi_mm_video01_s01 1 1 1 N
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_vsync_2 1 0 6 N 3370 N 3370 N 3370 N 3370 N 3370 4040
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_vsync_2 1 0 6 N 3370 N 3370 N 3370 N 3370 N 3370 4040
+preplace netloc axi_mm_video01_s02 1 1 1 N
+preplace netloc axi_mm_video01_s02 1 1 1 N
+preplace netloc inline_scaler_2_s2mm_fsync_out 1 8 5 6010 1990 N 1990 N 1990 N 1990 N
+preplace netloc inline_scaler_2_s2mm_fsync_out 1 8 5 6010 1990 N 1990 N 1990 N 1990 N
+preplace netloc mem_scaler_2_s2mm_introut 1 7 3 4990 3030 N 3030 6570
+preplace netloc mem_scaler_2_s2mm_introut 1 7 3 4990 3030 N 3030 6570
+preplace netloc axi4lite_1_m03_axi 1 8 5 N 2800 N 2800 N 2800 N 2800 8140
+preplace netloc axi4lite_1_m03_axi 1 8 5 N 2800 N 2800 N 2800 N 2800 8140
+preplace netloc microblaze_subsystem_led_gpio 1 10 4 N 3940 N 3940 N 3940 N
+preplace netloc microblaze_subsystem_led_gpio 1 10 4 N 3940 N 3940 N 3940 N
+preplace netloc microblaze_subsystem_led_gpio 1 10 4 N 3940 N 3940 N 3940 N
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_clk_1 1 0 1 370
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_clk_1 1 0 1 370
+preplace netloc inline_scaler_1_reset_n 1 3 11 2050 3490 N 3490 4120 2420 4760 1980 5090 2390 N 2390 N 2390 N 2390 N 2390 N 2390 8600
+preplace netloc inline_scaler_1_reset_n 1 3 11 2050 3490 N 3490 4120 2420 4760 1980 5090 2390 N 2390 N 2390 N 2390 N 2390 N 2390 8600
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_clk_2 1 0 6 N 3410 N 3410 N 3410 N 3410 N 3410 4060
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_clk_2 1 0 6 N 3410 N 3410 N 3410 N 3410 N 3410 4060
+preplace netloc mig_7series_1_init_calib_complete 1 4 10 N 140 N 140 N 140 N 140 N 140 N 140 N 140 N 140 N 140 N
+preplace netloc mig_7series_1_init_calib_complete 1 4 10 N 140 N 140 N 140 N 140 N 140 N 140 N 140 N 140 N 140 N
+preplace netloc lcd_gpio_port 1 10 4 N 3740 N 3740 N 3740 8590
+preplace netloc lcd_gpio_port 1 10 4 N 3740 N 3740 N 3740 8590
+preplace netloc xlconstant_3_const 1 4 10 3350 80 N 80 N 80 N 80 N 80 N 80 N 80 N 80 N 80 N
+preplace netloc xlconstant_3_const 1 4 10 3350 80 N 80 N 80 N 80 N 80 N 80 N 80 N 80 N 80 N
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_de_1 1 0 1 360
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_de_1 1 0 1 360
+preplace netloc tpg_2_vdma_m_axi_s2mm 1 8 1 6010
+preplace netloc tpg_2_vdma_m_axi_s2mm 1 8 1 6010
+preplace netloc microblaze_subsystem_const 1 10 4 N 4240 N 4240 N 4240 N
+preplace netloc microblaze_subsystem_const 1 10 4 N 4240 N 4240 N 4240 N
+preplace netloc clk_p_1 1 0 4 N 440 N 440 N 440 2050
+preplace netloc clk_p_1 1 0 4 N 440 N 440 N 440 2050
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_de_2 1 0 6 N 3390 N 3390 N 3390 N 3390 N 3390 4050
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_de_2 1 0 6 N 3390 N 3390 N 3390 N 3390 N 3390 4050
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_green_1 1 0 1 380
+preplace netloc dvi_in_0_fmc_hpc_dvidp_dvii_green_1 1 0 1 380
+preplace netloc sd_cd_n_1 1 0 10 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 6550
+preplace netloc sd_cd_n_1 1 0 10 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 6550
+preplace netloc sd_cd_n_1 1 0 10 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 N 4060 6550
+preplace netloc axi_mm_video23_s00 1 6 3 4660 1270 N 1270 N
+preplace netloc axi_mm_video23_s00 1 6 3 4660 1270 N 1270 N
+preplace netloc dvi_in_1_fmc_lpc_dvidp_dvii_blue_1 1 0 6 N 3350 N 3350 N 3350 N 3350 N 3350 4030
+preplace netloc dvi_in_1_fmc_lpc_dvidp_dvii_blue_1 1 0 6 N 3350 N 3350 N 3350 N 3350 N 3350 4030
+preplace netloc logicvc_2_pix_clk_o 1 13 1 N
+preplace netloc logicvc_2_pix_clk_o 1 13 1 N
+preplace netloc axi_iic_1_gpo 1 10 4 N 3960 N 3960 N 3960 N
+preplace netloc axi_iic_1_gpo 1 10 4 N 3960 N 3960 N 3960 N
+preplace netloc axi_iic_1_gpo 1 10 4 N 3960 N 3960 N 3960 N
+preplace netloc axi_mm_video23_s01 1 7 2 5070 1280 N
+preplace netloc axi_mm_video23_s01 1 7 2 5070 1280 N
+preplace netloc timebase_0_irq 1 5 5 N 3720 N 3720 N 3720 N 3720 6560
+preplace netloc timebase_0_irq 1 5 5 N 3720 N 3720 N 3720 N 3720 6560
+preplace netloc scaler_1_vdma_s2mm_fsync_in 1 3 3 2060 2820 N 2820 4010
+preplace netloc scaler_1_vdma_s2mm_fsync_in 1 3 3 2060 2820 N 2820 4010
+preplace netloc axi_mm_video23_s02 1 7 2 5080 1290 N
+preplace netloc axi_mm_video23_s02 1 7 2 5080 1290 N
+preplace netloc vauxn0_1 1 0 10 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N
+preplace netloc vauxn0_1 1 0 10 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N 3920 N
+preplace netloc sd_cmd_i_1 1 0 10 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 6620
+preplace netloc sd_cmd_i_1 1 0 10 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 N 4040 6620
+preplace netloc sin_1 1 0 10 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N
+preplace netloc sin_1 1 0 10 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N 3980 N
+preplace netloc axi_uart16550_1_sout 1 10 4 N 4000 N 4000 N 4000 N
+preplace netloc axi_uart16550_1_sout 1 10 4 N 4000 N 4000 N 4000 N
+preplace netloc s02_axi_1 1 4 10 3340 910 N 910 4770 1310 N 1310 N 1310 N 1310 N 1310 N 1310 N 1310 8610
+preplace netloc s02_axi_1 1 4 10 3340 910 N 910 4770 1310 N 1310 N 1310 N 1310 N 1310 N 1310 N 1310 8610
+preplace netloc clk_n_1 1 0 4 N 460 N 460 N 460 2060
+preplace netloc clk_n_1 1 0 4 N 460 N 460 N 460 2060
+preplace netloc logisdhc_0_sd_cmd_o 1 10 4 N 4200 N 4200 N 4200 N
+preplace netloc logisdhc_0_sd_cmd_o 1 10 4 N 4200 N 4200 N 4200 N
+preplace netloc inline_scaler_2_s2mm_introut 1 8 2 6000 2010 6640
+preplace cgraphic comment_0 autolayout 1 0.454118 -0.1275 textcolor 4 linecolor 6 linewidth 2
+preplace cgraphic comment_1 autolayout 1 0.0237838 0.358621 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_2 autolayout 1 0.188108 0.36092 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_3 autolayout 1 0.469189 0.37931 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_4 autolayout 1 0.643243 0.383908 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_5 autolayout 1 0.909412 0.3575 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_6 autolayout 1 0.777647 1.0125 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_7 autolayout 1 0.3 -0.0275 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_8 autolayout 1 0.247568 0.154023 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_9 autolayout 1 0.620541 0.245977 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_10 autolayout 1 0.111351 0.234483 textcolor 4 linecolor 3 linewidth 2
+preplace cgraphic comment_11 autolayout 1 0.631765 0.715 textcolor 4 linecolor 3 linewidth 2
+levelinfo -pg 1 320 630 1300 1830 3090 3870 4440 4880 5610 6320 7130 7526 8030 8400 8630
+",
+   linecolor_comment_0: "#ffcc99",
+}
